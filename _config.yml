@@ -1,5 +1,7 @@
 theme: minima
 
+title: Institute for Categorical Cybernetics
+
 header_pages:
   - about.md
   - research.md
