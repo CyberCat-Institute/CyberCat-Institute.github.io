@@ -1,4 +1,6 @@
-# Institute for Categorical Cybernetics
+---
+title: Institute for Categorical Cybernetics
+---
 
 ## Governance and control for the age of AI
 

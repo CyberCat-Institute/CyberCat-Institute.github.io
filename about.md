@@ -1,4 +1,6 @@
-# About us
+---
+title: About us
+---
 
 ## What is categorical cybernetics?
 

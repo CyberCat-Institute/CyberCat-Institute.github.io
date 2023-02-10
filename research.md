@@ -1,4 +1,6 @@
-# Our research
+---
+title: Our research
+---
 
 ## Machine learning
 
