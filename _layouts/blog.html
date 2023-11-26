@@ -1,0 +1,81 @@
+---
+layout: default
+---
+<div class="post">
+
+  {% if page.title %}
+  <header class="post-header">
+    <h1 class="post-title">{% include i18n.html %} {{ page.title | escape }}</h1>
+  </header>
+  {% endif %}
+
+  {{ content }}
+
+  {% capture site_lang %}{{ site.lang | default: "en" }}{% endcapture %}
+
+  <ul class="post-archives" style="margin-top: 20px;">
+    {% for post in site.posts %}
+      {% capture post_lang %}{{ post.lang | default: site_lang }}{% endcapture %}
+      {% capture lang %}{% if post_lang != site_lang %}{{ post_lang }}{% endif %}{% endcapture %}
+
+      <li{% if lang != empty %} lang="{{ lang }}"{% endif %}>
+        <header class="post-header-list">
+          <h1 class="post-title-list">
+            {% if post.external-url %}
+              <a class="post-link" href="{{ post.external-url }}">{{ post.title | escape }} &rarr;</a>
+            {% else %}
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            {% endif %}
+          </h1>
+
+          <p class="post-meta">
+            {% include date.html date=post.date lang=lang %}
+            {% if post.author %} 
+            • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="name">
+                  {{ post.author }}
+                </span>
+              </span>
+            {% endif %}
+            {% if post.categories != empty or post.tags != empty %}
+              {% include category_links.html categories=post.categories tags=post.tags %}
+            {% endif %}
+            {% if post.external-url %}
+              • <a href="{{ post.url | relative_url }}">Permalink</a>
+            {% endif %}
+          </p>
+        </header>
+
+        <div class="post-content-list">
+          {{ post.excerpt }}
+        </div>
+        <!-- {% if post.content contains site.excerpt_separator %}
+          <p class="post-continue">
+            <a href="{{ post.url | relative_url }}">{% include i18n.html lang=lang value="morelink" default="Read on" %} &rarr;</a>
+          </p>
+        {% endif %} -->
+      </li>
+
+      <!-- <li>
+        <span class="post-meta">
+          {% include date.html date=post.date lang=lang %}
+          {% if post.categories != empty or post.tags != empty %}
+            {% include category_links.html categories=post.categories tags=post.tags %}
+          {% endif %}
+          {% if post.external-url %}
+            • <a href="{{ post.url | relative_url }}">Permalink</a>
+          {% endif %}
+        </span>
+
+        <h2>
+          {% if post.external-url %}
+            <a class="post-link" href="{{ post.external-url }}">{{ post.title | escape }} &rarr;</a>
+          {% else %}
+            <a class="post-link" href="{{ post.url | relative_url }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ post.title | escape }}</a>
+          {% endif %}
+        </h2>
+      </li> -->
+    {% endfor %}
+  </ul>
+
+</div>
