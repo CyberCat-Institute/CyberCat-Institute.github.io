@@ -1,0 +1,259 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Our variables
+$base-font-family: Bitter, "Apple SD Gothic Neo", AppleGothic, NanumBarunGothic, "Malgun Gothic", Dotum, sans-serif;
+$monospace-font-family: Monaco, Menlo, Consolas, "Courier New", DotumChe, monospace;
+$base-font-size:   16px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #fc3737;
+
+$grey-color:       #757575;
+$grey-color-light: lighten($grey-color, 45%);
+$grey-color-dark:  darken($grey-color, 20%);
+
+// Width of the content area
+$content-width:    800px;
+$on-palm:          600px;
+$on-laptop:        800px;
+
+$nav-color: $brand-color;
+
+$link-color: lighten($nav-color, 5%);
+$link-color-visited: lighten($nav-color, 15%);
+$thanks-background: lighten($nav-color, 30%);
+$math-background: lighten($nav-color, 35%);
+$highlighter-background: lighten($nav-color, 38%);
+
+// whiteglass also includes a mixin for defining media queries.
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit * 0.5;
+//         padding-left: $spacing-unit * 0.5;
+//     }
+// }
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+// Import partials from the `whiteglass` theme.
+@import "whiteglass";
+
+.site-title {
+  @include media-query($on-laptop) {
+    float: none;
+    text-align: center;
+    display: block;
+  }
+}
+
+.site-nav {
+
+  @include media-query($on-laptop) {
+    float: none;
+    margin-top: 9px;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .page-link {
+    color: $nav-color;
+    font-weight: bold;
+    @include media-query($on-laptop) {
+      margin: 0 10px;
+    }
+  }
+}
+
+a {
+  color: $link-color;
+  &:hover {
+    color: $link-color;
+    text-decoration: underline;
+  }
+}
+
+a:visited {
+  color: $link-color-visited;
+  &:hover {
+    color: $link-color;
+    text-decoration: underline;
+  }
+}
+
+pre,
+code {
+  background-color: $highlighter-background;
+}
+
+.highlight {
+  background-color: $highlighter-background;
+  @extend %vertical-rhythm;
+
+  .highlighter-rouge & {
+    background-color: $highlighter-background;
+  }
+}
+
+/**
+ * Posts
+ */
+.post-header-list {
+  margin-bottom: $spacing-unit * 0.5;
+}
+
+.post-title-list {
+  font-size: 26px;
+  letter-spacing: -1px;
+  line-height: 1;
+
+  @include media-query($on-laptop) {
+    font-size: 22px;
+  }
+}
+
+.post-title {
+  font-size: 42px;
+  letter-spacing: -1px;
+  line-height: 1;
+  font-weight: bold;
+  @include media-query($on-laptop) {
+    font-size: 36px;
+  }
+}
+
+.post-content {
+  margin-bottom: $spacing-unit;
+
+  h1 {
+    font-size: 38px;
+    font-weight: bold;
+
+    @include media-query($on-laptop) {
+      font-size: 34px;
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+
+    @include media-query($on-laptop) {
+      font-size: 28px;
+    }
+  }
+
+  h3 {
+    font-size: 26px;
+    font-weight: bold;
+
+    @include media-query($on-laptop) {
+      font-size: 22px;
+    }
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+
+    @include media-query($on-laptop) {
+      font-size: 18px;
+    }
+  }
+}
+
+.post{
+  counter-reset: definition lemma proposition theorem corollary;
+
+  .definition {
+    margin: 1.8em .8em;
+    /*border-left: 2px solid $grey-color;*/
+    padding: 0.1em 1em;
+    color: $grey-color;
+    font-style: regular;
+    background-color: $math-background;
+    }
+    .definition:before {
+    counter-increment: definition;
+    content: "Definition " counter(definition) ".";
+    font-weight: bold;
+    }
+
+    .lemma {
+    margin: 1.8em .8em;
+    /*border-left: 2px solid $grey-color;*/
+    padding: 0.1em 1em;
+    color: $grey-color;
+    font-style: regular;
+    background-color: $math-background;
+    }
+    .lemma:before {
+    counter-increment: lemma;
+    content: "Lemma " counter(definition) ".";
+    font-weight: bold;
+    }
+
+    .proposition {
+    margin: 1.8em .8em;
+    /*border-left: 2px solid $grey-color;*/
+    padding: 0.1em 1em;
+    color: $grey-color;
+    font-style: regular;
+    background-color: $math-background;
+    }
+    .proposition:before {
+    counter-increment: proposition;
+    content: "Proposition " counter(proposition) ".";
+    font-weight: bold;
+    }
+
+    .corollary {
+    margin: 1.8em .8em;
+    /*border-left: 2px solid $grey-color;*/
+    padding: 0.1em 1em;
+    color: $grey-color;
+    font-style: regular;
+    background-color: $math-background;
+    }
+    .corollary:before {
+    counter-increment: corollary;
+    content: "Corollary " counter(corollary) ".";
+    font-weight: bold;
+    }
+
+    .theorem {
+    margin: 1.8em .8em;
+    /*border-left: 2px solid $grey-color;*/
+    padding: 0.1em 1em;
+    color: $grey-color;
+    font-style: italic;
+    background-color: $math-background;
+    }
+    .theorem:before {
+    counter-increment: theorem;
+    content: "Theorem " counter(theorem) ".";
+    font-weight: bold;
+    }
+
+  .thanks {
+    margin: 1.8em .8em;
+    /*border-left: 2px solid $grey-color;*/
+    padding: 0.1em 1em;
+    color: $grey-color;
+    font-style: regular;
+    background-color: $thanks-background;
+  }
+}

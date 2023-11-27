@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <generator uri="http://jekyllrb.com" version="3.9.3">Jekyll</generator>
+  
+  
+  <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" />
+  <updated>2023-11-27T18:12:44+00:00</updated>
+  <id>http://localhost:4000//</id>
+
+  
+    <title type="html">Cybercat Institute</title>
+  
+
+  
+    <subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle>
+  
+
+  
+    <author>
+        <name>Cybercat Institute</name>
+      
+      
+    </author>
+  
+
+  
+  
+    <entry>
+      
+      <title type="html">Test post</title>
+      
+      
+      <link href="http://localhost:4000/2023/11/26/test-post/" rel="alternate" type="text/html" title="Test post" />
+      
+      <published>2023-11-26T00:00:00+00:00</published>
+      <updated>2023-11-26T00:00:00+00:00</updated>
+      <id>http://localhost:4000/2023/11/26/test-post</id>
+      <content type="html" xml:base="http://localhost:4000/2023/11/26/test-post/">&lt;p&gt;The Cybercat blog website is based on the &lt;a href=&quot;https://jekyllthemes.io/theme/whiteglass&quot;&gt;Whiteglass&lt;/a&gt; theme.&lt;/p&gt;
+
+&lt;h2&gt;Workflow&lt;/h2&gt;
+
+&lt;p&gt;Standard github workflow:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create a branch&lt;/li&gt;
+  &lt;li&gt;Add your post&lt;/li&gt;
+  &lt;li&gt;Make a PR&lt;/li&gt;
+  &lt;li&gt;Wait for approval.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The blog will be automatically rebuilt once your PR is merged.&lt;/p&gt;
+
+&lt;h3&gt;Previewing&lt;/h3&gt;
+
+&lt;p&gt;Since the blog uses Jekyll, you will need to &lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot;&gt;install it&lt;/a&gt; to be able to preview your contents. Once the installation is complete, just navigate to the repo folder and give &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;. Jekyll will spawn a local server (usually at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;127.0.0.1:4000&lt;/code&gt;) that will allow you to see the blog in locale.&lt;/p&gt;
+
+&lt;h2&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;Posts must be placed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder. Post titles follow the convention &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yyyy-mm-dd-title.md&lt;/code&gt;. Post assets (such as images) go in the folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assetsPost&lt;/code&gt;, where you should create a folder with the same name of the post.&lt;/p&gt;
+
+&lt;p&gt;Each post should start with the following preamble:&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;the title of your post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your name. Autor defaults to &apos;20[ ] team&apos; if left blank&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;keyword or a list of keywords [keyword1, keyword2, keyword3]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;excerpt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;A short summary of your post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;assetsPosts/yourPostFolder/imageToBeUsedAsThumbnails.png This is optional, but useful if e.g. you share the post on Twitter.&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;usemathjax&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; (omit this line if you don&apos;t need to typeset math)&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;thanks&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;A short acknowledged message. It will be shown immediately above the content of your post.&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As for the content of the post, it should be typeset in markdown.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Inline math is shown by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ... $&lt;/code&gt;. Notice that some expressions such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a_b&lt;/code&gt; typeset correctly, while expressions like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a_{b}&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a_\command&lt;/code&gt; sometimes do not. I guess this is because mathjax expects &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt; to be followed by a literal.&lt;/li&gt;
+  &lt;li&gt;Display math is shown by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ ... $$&lt;/code&gt;. The problem above doesn’t show up in this case, but you gotta be careful:
+    &lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  text
+  $$ ... $$
+  text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;does not typeset correctly, whereas:&lt;/p&gt;
+    &lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  text
+
+  $$
+  ...
+  $$
+
+  text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;does. You can also use environments, as in:&lt;/p&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $$
+  \begin{align*}
+   ...
+  \end{align*}
+  $$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;LaTeX-like theorem environments&lt;/h2&gt;
+
+&lt;p&gt;We provide the following theorem environments: Definition, Proposition, Lemma, Theorem and Corollary. Numbering is automatic. If you need others, just ask. The way these works is as follows:&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;definition&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+A *definition* is a blabla, such that: $...$. Furthermore, it is:
+
+$$
+...
+$$
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This gets rendered as a shaded box with your content inside, prepended with a bold &lt;strong&gt;Definition.&lt;/strong&gt;, as follows:&lt;/p&gt;
+&lt;div class=&quot;definition&quot;&gt;
+  &lt;p&gt;A &lt;em&gt;definition&lt;/em&gt; is a blabla, such that: $…$. Furthermore, it is:&lt;/p&gt;
+
+\[...\]
+
+&lt;/div&gt;
+
+&lt;p&gt;Numbering is automatic. Just swap &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;definition&lt;/code&gt; inside the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class=&quot;...&quot;&lt;/code&gt; field above with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proposition&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lemma&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;theorem&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corollary&lt;/code&gt; should you need those.&lt;/p&gt;
+
+&lt;p&gt;If you need to reference results, just add an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id=&quot;...&quot;&lt;/code&gt; field:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;definition&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myDefinition&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+A *definition* is a blabla, such that: $...$. Furthermore, it is:
+
+$$
+...
+$$
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you can cite it as&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;As we remarked in &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Reference description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;#myDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;, we are awesome...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2&gt;Images&lt;/h2&gt;
+
+&lt;p&gt;Whenever possible, we recommend the images to be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;800&lt;/code&gt; pixels in width, with &lt;strong&gt;transparent&lt;/strong&gt; backround. Ideally, these should be easily readable on the light gray background of the blog website. You can deviate from these guidelines if you have no alternative, but our definition and your definition of ‘I had no alternative’ may be different, and &lt;em&gt;we may complain&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;CyberCat blog offers support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Tom&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &apos;Hi, Tom&apos; to STDOUT.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To include a code snippet, just give:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;language the snippet is written in
+&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;your code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>John Doe</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="jekyll" />
+      
+        <category term="update" />
+      
+
+      
+
+      
+        <summary type="html">This is a short summary of the post. It is meant to be a test.</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+</feed>
