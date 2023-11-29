@@ -1,0 +1,29 @@
+---
+layout: page
+---
+
+<h2>Directors</h2>
+
+<div class="people-grid-container" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">        
+    {% for person in page.directors %}
+        <div class="people-grid-item-wrapper">        
+            <a class="people-grid-item" href={{person.link}} target="_blank" rel="noopener noreferrer">				
+                <img src={{person.image}} alt={{person.name}}/>
+                <h4>{{person.name}}</h4>
+            </a>	
+        </div>
+    {% endfor %}		
+</div>
+
+<h2>Collaborators</h2>
+
+<div class="people-grid-container" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">        
+    {% for person in page.collaborators %}
+        <div class="people-grid-item-wrapper">        
+            <a class="people-grid-item" href={{person.link}} target="_blank" rel="noopener noreferrer">				
+                <img src={{person.image}} alt={{person.name}}/>
+                <h4>{{person.name}}</h4>
+            </a>	
+        </div>
+    {% endfor %}		
+</div>

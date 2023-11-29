@@ -1,0 +1,17 @@
+---
+layout: page
+---
+
+{% for project in page.projects %}
+
+<h1>{{ project.name |markdownify}}</h1>
+<div class="projects-grid-container">      
+    <a class="projects-grid-item" href={{project.link}} target="_blank" rel="noopener noreferrer">				
+        <img src={{project.image}} alt={{project.name}}/>
+    </a>	
+    <div class="projects-grid-item-wrapper">			
+        {{ project.description | markdownify}}
+    </div>			
+    </div>
+
+{% endfor %}
