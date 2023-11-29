@@ -106,6 +106,9 @@
 	</script>
 	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
+	<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+	<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -148,23 +151,57 @@
   <div class="post-content" itemprop="articleBody">
     <p>The Cybercat blog website is based on the <a href="https://jekyllthemes.io/theme/whiteglass">Whiteglass</a> theme.</p>
 
+<h2>TOC <!-- omit in toc --></h2>
+
+<ul>
+  <li><a href="#workflow">Workflow</a>
+    <ul>
+      <li><a href="#previewing">Previewing</a></li>
+    </ul>
+  </li>
+  <li><a href="#post-preamble">Post preamble</a></li>
+  <li><a href="#latex">Latex</a>
+    <ul>
+      <li><a href="#theorem-environments">Theorem environments</a>
+        <ul>
+          <li><a href="#referencing">Referencing</a></li>
+        </ul>
+      </li>
+      <li><a href="#typesetting-diagrams">Typesetting diagrams</a>
+        <ul>
+          <li><a href="#quiver">Quiver</a></li>
+          <li><a href="#tikz">Tikz</a></li>
+          <li><a href="#referencing-1">Referencing</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#images">Images</a>
+    <ul>
+      <li><a href="#referencing-2">Referencing</a></li>
+    </ul>
+  </li>
+  <li><a href="#code">Code</a></li>
+</ul>
+
 <h2>Workflow</h2>
 
 <p>Standard github workflow:</p>
 <ul>
+  <li>Clone this repo</li>
   <li>Create a branch</li>
-  <li>Add your post</li>
+  <li>Write your post</li>
   <li>Make a PR</li>
-  <li>Wait for approval.</li>
+  <li>Wait for approval</li>
 </ul>
 
 <p>The blog will be automatically rebuilt once your PR is merged.</p>
 
 <h3>Previewing</h3>
 
-<p>Since the blog uses Jekyll, you will need to <a href="https://jekyllrb.com/docs/installation/">install it</a> to be able to preview your contents. Once the installation is complete, just navigate to the repo folder and give <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>. Jekyll will spawn a local server (usually at <code class="language-plaintext highlighter-rouge">127.0.0.1:4000</code>) that will allow you to see the blog in locale.</p>
+<p>Since the blog uses Jekyll, you will need to <a href="https://jekyllrb.com/docs/installation/">install it</a> or use the included nix flake devshell (just run <code class="language-plaintext highlighter-rouge">nix develop</code> with flakes-enabled nix installed) to be able to preview your contents. Once the installation is complete, just navigate to the repo folder and give <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>. Jekyll will spawn a local server (usually at <code class="language-plaintext highlighter-rouge">127.0.0.1:4000</code>) that will allow you to see the blog in locale.</p>
 
-<h2>Usage</h2>
+<h2>Post preamble</h2>
 
 <p>Posts must be placed in the <code class="language-plaintext highlighter-rouge">_posts</code> folder. Post titles follow the convention <code class="language-plaintext highlighter-rouge">yyyy-mm-dd-title.md</code>. Post assets (such as images) go in the folder <code class="language-plaintext highlighter-rouge">assetsPost</code>, where you should create a folder with the same name of the post.</p>
 
@@ -172,7 +209,7 @@
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s">the title of your post</span>
-<span class="na">author</span><span class="pi">:</span> <span class="s">your name. Autor defaults to '20[ ] team' if left blank</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">your name</span>
 <span class="na">categories</span><span class="pi">:</span> <span class="s">keyword or a list of keywords [keyword1, keyword2, keyword3]</span>
 <span class="na">excerpt</span><span class="pi">:</span> <span class="s">A short summary of your post</span>
 <span class="na">image</span><span class="pi">:</span> <span class="s">assetsPosts/yourPostFolder/imageToBeUsedAsThumbnails.png This is optional, but useful if e.g. you share the post on Twitter.</span>
@@ -182,6 +219,9 @@
 </code></pre></div></div>
 
 <p>As for the content of the post, it should be typeset in markdown.</p>
+
+<h2>Latex</h2>
+
 <ul>
   <li>Inline math is shown by using <code class="language-plaintext highlighter-rouge">$ ... $</code>. Notice that some expressions such as <code class="language-plaintext highlighter-rouge">a_b</code> typeset correctly, while expressions like <code class="language-plaintext highlighter-rouge">a_{b}</code> or <code class="language-plaintext highlighter-rouge">a_\command</code> sometimes do not. I guess this is because mathjax expects <code class="language-plaintext highlighter-rouge">_</code> to be followed by a literal.</li>
   <li>Display math is shown by using <code class="language-plaintext highlighter-rouge">$$ ... $$</code>. The problem above doesn’t show up in this case, but you gotta be careful:
@@ -208,20 +248,23 @@
   </li>
 </ul>
 
-<h2>LaTeX-like theorem environments</h2>
+<h3>Theorem environments</h3>
 
 <p>We provide the following theorem environments: Definition, Proposition, Lemma, Theorem and Corollary. Numbering is automatic. If you need others, just ask. The way these works is as follows:</p>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"definition"</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-A *definition* is a blabla, such that: $...$. Furthermore, it is:
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{</span><span class="c">% def %}</span>
+A *definition* is a blabla, such that: <span class="p">$</span><span class="nb">...</span><span class="p">$</span>. Furthermore, it is:
 
-$$
+<span class="p">$$</span><span class="nb">
 ...
-$$
+</span><span class="p">$$</span>
 
-<span class="nt">&lt;/div&gt;</span>
+<span class="p">{</span><span class="c">% enddef %}</span>
+
 </code></pre></div></div>
 
-<p>This gets rendered as a shaded box with your content inside, prepended with a bold <strong>Definition.</strong>, as follows:</p>
+<p>This gets rendered as follows:</p>
+
 <div class="definition">
   <p>A <em>definition</em> is a blabla, such that: $…$. Furthermore, it is:</p>
 
@@ -229,26 +272,177 @@ $$
 
 </div>
 
-<p>Numbering is automatic. Just swap <code class="language-plaintext highlighter-rouge">definition</code> inside the <code class="language-plaintext highlighter-rouge">class="..."</code> field above with <code class="language-plaintext highlighter-rouge">proposition</code>, <code class="language-plaintext highlighter-rouge">lemma</code>, <code class="language-plaintext highlighter-rouge">theorem</code> and <code class="language-plaintext highlighter-rouge">corollary</code> should you need those.</p>
+<p>Numbering is automatic. Use the tags:</p>
 
-<p>If you need to reference results, just add an <code class="language-plaintext highlighter-rouge">id="..."</code> field:</p>
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{</span><span class="c">% def %}</span>
+    For your definitions
+<span class="p">{</span><span class="c">% enddef %}</span>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"definition"</span> <span class="na">markdown=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"myDefinition"</span><span class="nt">&gt;</span>
-A *definition* is a blabla, such that: $...$. Furthermore, it is:
+<span class="p">{</span><span class="c">% not %}</span>
+    For your notations
+<span class="p">{</span><span class="c">% endnot %}</span>
 
-$$
+<span class="p">{</span><span class="c">% ex %}</span>
+    For your examples
+<span class="p">{</span><span class="c">% endex %}</span>
+
+<span class="p">{</span><span class="c">% diag %}</span>
+    For your diagrams
+<span class="p">{</span><span class="c">% enddiag %}</span>
+
+<span class="p">{</span><span class="c">% prop %}</span>
+    For your propositions
+<span class="p">{</span><span class="c">% endprop %}</span>
+
+<span class="p">{</span><span class="c">% lem %}</span>
+    For your lemmas
+<span class="p">{</span><span class="c">% endlem %}</span>
+
+<span class="p">{</span><span class="c">% thm %}</span>
+    For your theorems
+<span class="p">{</span><span class="c">% endthm %}</span>
+
+<span class="p">{</span><span class="c">% cor %}</span>
+    For your corollaries
+<span class="p">{</span><span class="c">% endcor %}</span>
+
+</code></pre></div></div>
+
+<h4>Referencing</h4>
+
+<p>If you need to reference results just append a <code class="language-plaintext highlighter-rouge">{"id":"your_reference_tag"}</code> after the tag, where <code class="language-plaintext highlighter-rouge">your_reference_tag</code> is the same as a LaTex label. Fore example:</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{</span><span class="c">% def {"id":"your_reference_tag"} %}</span>
+A *definition* is a blabla, such that: <span class="p">$</span><span class="nb">...</span><span class="p">$</span>. Furthermore, it is:
+
+<span class="p">$$</span><span class="nb">
 ...
-$$
+</span><span class="p">$$</span>
+<span class="p">{</span><span class="c">% enddef %}</span>
 
-<span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p>Then you can cite it as</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>As we remarked in <span class="p">[</span><span class="nv">Reference description</span><span class="p">](</span><span class="sx">#myDefinition</span><span class="p">)</span>, we are awesome...
+<p>Then you can reference this by doing:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>As we remarked in <span class="p">[</span><span class="nv">Reference description</span><span class="p">](</span><span class="sx">#your_reference_tag</span><span class="p">)</span>, we are awesome...
 </code></pre></div></div>
+
+<h3>Typesetting diagrams</h3>
+
+<p>We support two types of diagrams: quiver and TikZ.</p>
+
+<h4>Quiver</h4>
+
+<p>You can render <a href="https://q.uiver.app/">quiver</a> diagrams by enclosing quiver expoted iframes between <code class="language-plaintext highlighter-rouge">quiver</code> tags:</p>
+<ul>
+  <li>On <a href="https://q.uiver.app/">quiver</a>, click on <code class="language-plaintext highlighter-rouge">Export: Embed code</code></li>
+  <li>Copy the code</li>
+  <li>In the blog, put it between delimiters as follows:</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{% quiver %}
+<span class="c">&lt;!-- https://q.uiver.app/codecodecode--&gt;</span>
+<span class="nt">&lt;iframe</span> <span class="na">codecodecode</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+{% endquiver %}
+
+</code></pre></div></div>
+
+<p>They get rendered as follows:</p>
+<div class="quiver">
+<!-- https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMiwiQiJdLFsyLDAsIkEiXSxbMCwxLCJnIiwxXSxbMiwxLCJmIiwxXSxbMCwyLCJoIiwxXV0= -->
+<iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMiwiQiJdLFsyLDAsIkEiXSxbMCwxLCJnIiwxXSxbMiwxLCJmIiwxXSxbMCwyLCJoIiwxXV0=&amp;embed" width="432" height="432" style="border-radius: 8px; border: none;"></iframe>
+</div>
+
+<p><strong>Should the picture come out cropped, select <code class="language-plaintext highlighter-rouge">fixed size</code> when exporting the quiver diagram, and choose some suitable parameters.</strong></p>
+
+<h4>Tikz</h4>
+
+<p>You can render tikz diagrams by enclosing tikz code between <code class="language-plaintext highlighter-rouge">tikz</code> tags, as follows:</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{</span><span class="c">% tikz %}</span>
+  <span class="nt">\begin{tikzpicture}</span>
+    <span class="k">\draw</span> (0,0) circle (1in);
+  <span class="nt">\end{tikzpicture}</span>
+<span class="p">{</span><span class="c">% endtikz %}</span>
+
+</code></pre></div></div>
+
+<p>Tikz renders as follows:</p>
+<div class="tikz"><script type="text/tikz">
+    \rotatebox{0}{
+        \scalebox{1}{
+            \begin{tikzpicture}
+                    \node[circle, fill, minimum size=5pt, inner sep=0pt, label=left:{$1$}] (al1) at (-2,0) {};
+                    \node[circle, fill, minimum size=5pt, inner sep=0pt, label=right:{$1$}] (ar1) at (0,0) {};
+                    \node[circle, fill, minimum size=5pt, inner sep=0pt, label=right:{$2$}] (ar2) at (0,-1) {};
+                    \node[circle, fill, minimum size=5pt, inner sep=0pt, label=right:{$3$}] (ar3) at (0,-2) {};
+                        \draw[thick] (al1) to (ar1);
+                        \draw[thick, out=180, in=180, looseness=2] (ar2) to (ar3);
+            \end{tikzpicture}
+        }
+    }
+</script></div>
+
+<p>Notice that at the moment tikz rendering:</p>
+<ul>
+  <li>Supports any option you put after <code class="language-plaintext highlighter-rouge">\begin{document}</code> in a <code class="language-plaintext highlighter-rouge">.tex</code> file. So you can use this to include any stuff you’d typeset with LaTex (but we STRONGLY advise against it).</li>
+  <li>Does not support usage of anything that should go in the LaTex preamble, that is, before <code class="language-plaintext highlighter-rouge">\begin{document}</code>. This includes exernal tikz libraries such as <code class="language-plaintext highlighter-rouge">calc</code>, <code class="language-plaintext highlighter-rouge">arrows</code>, etc; and packages such as <code class="language-plaintext highlighter-rouge">tikz-cd</code>. Should you need <code class="language-plaintext highlighter-rouge">tikz-cd</code>, use quiver as explained above. If you need fancier stuff, you’ll have to render the tikz diagrams by yourself and import them as images (see below).</li>
+</ul>
+
+<h4>Referencing</h4>
+
+<p>Referencing works also for the quiver and tikz tags, as in:</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{</span><span class="c">% tikz {"id":"your_reference_tag"} %}</span>
+...
+<span class="p">{</span><span class="c">% endtikz %}</span>
+
+</code></pre></div></div>
+
+<p>This automatically creates a numbered ‘Figure’ caption under the figure, as in:</p>
+
+<div class="quiverCaption" id="example"><div class="quiver">
+<!-- https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMiwiQiJdLFsyLDAsIkEiXSxbMCwxLCJnIiwxXSxbMiwxLCJmIiwxXSxbMCwyLCJoIiwxXV0= -->
+<iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMiwiQiJdLFsyLDAsIkEiXSxbMCwxLCJnIiwxXSxbMiwxLCJmIiwxXSxbMCwyLCJoIiwxXV0=&amp;embed" width="432" height="432" style="border-radius: 8px; border: none;"></iframe>
+</div></div>
+
+<p>Whenever possible, we encourage you to enclose diagrams into definitions/propositions/etc should you need to reference them.</p>
+
 <h2>Images</h2>
 
-<p>Whenever possible, we recommend the images to be <code class="language-plaintext highlighter-rouge">800</code> pixels in width, with <strong>transparent</strong> backround. Ideally, these should be easily readable on the light gray background of the blog website. You can deviate from these guidelines if you have no alternative, but our definition and your definition of ‘I had no alternative’ may be different, and <em>we may complain</em>.</p>
+<p>Images are included via standard markdown syntax:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">image description</span><span class="p">](</span><span class="sx">image_path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">image_path</code> can be a remote link. Should you need to upload images to this blog post, do as follows:</p>
+
+<ul>
+  <li>Create a folder in <code class="language-plaintext highlighter-rouge">assetsPosts</code> with the same title of the blog post file. So if the blogpost file is <code class="language-plaintext highlighter-rouge">yyyy-mm-dd-title.md</code>, create the folder <code class="language-plaintext highlighter-rouge">assetsPosts/yyyy-mm-dd-title</code></li>
+  <li>Place your images there</li>
+  <li>Reference the images by doing:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  !<span class="p">[</span><span class="nv">image description</span><span class="p">](</span><span class="sx">../assetsPosts/yyyy-mm-dd-title/image</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Whenever possible, we recommend the images to be in the format <code class="language-plaintext highlighter-rouge">.png</code>, and to be <code class="language-plaintext highlighter-rouge">800</code> pixels in width, with <strong>transparent</strong> backround. Ideally, these should be easily readable on the light gray background of the blog website. You can strive from these guidelines if you have no alternative, but our definition and your definition of ‘I had no alternative’ may be different, and <em>we may complain</em>.</p>
+
+<h4>Referencing</h4>
+
+<p>Referencing works exactly as for diagrams:</p>
+
+<div class="language-latex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{</span><span class="c">% figure {"id":"your_reference_tag"} %}</span>
+  ![image description](image<span class="p">_</span>path)
+<span class="p">{</span><span class="c">% endfigure %}</span>
+
+</code></pre></div></div>
 
 <h2>Code</h2>
 

@@ -719,7 +719,6 @@ code {
   margin: 1.8em 0.8em;
   /*border-left: 2px solid $gray;*/
   padding: 0.1em 1em;
-  font-size: 22px;
   font-style: regular;
 }
 .post .definition, .post .notation, .post .example, .post .proposition, .post .lemma, .post .theorem, .post .corollary {
@@ -762,10 +761,9 @@ code {
   font-weight: bold;
 }
 .post .figure:after {
-  font-family: plexMono;
   display: flex;
   line-height: 1.7;
-  margin: 0.8em 0 0 0.8em;
+  margin: 0.8em 0 0.8em 0;
   padding: 0;
   justify-content: center;
   counter-increment: figure;
@@ -783,12 +781,9 @@ code {
   justify-content: center;
 }
 .post .quiverCaption:after, .post .tikzCaption:after {
-  font-size: 22px;
-  font-style: regular;
-  font-family: plexMono;
   display: flex;
   line-height: 1.7;
-  margin: -0.5em 0 0em 0.8em;
+  margin: -0.5em 0 1.8em 0em;
   padding: 0;
   justify-content: center;
   counter-increment: figure;
