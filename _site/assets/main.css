@@ -801,7 +801,7 @@ code {
 
 .people-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   justify-content: center;
   padding: 20px;
@@ -818,6 +818,7 @@ code {
   justify-content: center;
   align-items: center;
   color: #000;
+  max-width: 200px;
 }
 
 .people-grid-item img {

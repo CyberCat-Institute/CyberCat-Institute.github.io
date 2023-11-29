@@ -4,7 +4,7 @@ layout: page
 
 <h2>Directors</h2>
 
-<div class="people-grid-container" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">        
+<div class="people-grid-container">        
     {% for person in page.directors %}
         <div class="people-grid-item-wrapper">        
             <a class="people-grid-item" href={{person.link}} target="_blank" rel="noopener noreferrer">				
@@ -17,7 +17,7 @@ layout: page
 
 <h2>Collaborators</h2>
 
-<div class="people-grid-container" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">        
+<div class="people-grid-container">        
     {% for person in page.collaborators %}
         <div class="people-grid-item-wrapper">        
             <a class="people-grid-item" href={{person.link}} target="_blank" rel="noopener noreferrer">				
