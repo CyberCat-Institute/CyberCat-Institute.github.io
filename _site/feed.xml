@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <generator uri="http://jekyllrb.com" version="3.9.3">Jekyll</generator>
+  <generator uri="http://jekyllrb.com" version="4.3.2">Jekyll</generator>
   
   
   <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" />
-  <updated>2023-11-27T18:12:44+00:00</updated>
+  <updated>2023-11-29T16:50:08+00:00</updated>
   <id>http://localhost:4000//</id>
 
   
@@ -66,7 +66,7 @@
 &lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;keyword or a list of keywords [keyword1, keyword2, keyword3]&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;excerpt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;A short summary of your post&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;assetsPosts/yourPostFolder/imageToBeUsedAsThumbnails.png This is optional, but useful if e.g. you share the post on Twitter.&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;usemathjax&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; (omit this line if you don&apos;t need to typeset math)&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;usemathjax&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; (omit this line if you don&apos;t need to typeset math)&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;thanks&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;A short acknowledged message. It will be shown immediately above the content of your post.&lt;/span&gt;
 &lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;

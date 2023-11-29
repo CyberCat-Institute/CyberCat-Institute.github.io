@@ -176,84 +176,107 @@ code {
 }
 
 .post{
-  counter-reset: definition lemma proposition theorem corollary;
+  counter-reset: definition notation example proposition lemma theorem corollary figure;
 
-  .definition {
+  .definition, .notation, .example, .figure, .proposition, .lemma, .theorem, .corollary {
     margin: 1.8em .8em;
-    /*border-left: 2px solid $grey-color;*/
+    /*border-left: 2px solid $gray;*/
     padding: 0.1em 1em;
-    color: $grey-color;
+    font-size: 22px;
     font-style: regular;
+  }
+
+  .definition, .notation, .example, .proposition, .lemma, .theorem, .corollary {
+    color: $grey-color;
     background-color: $math-background;
-    }
-    .definition:before {
+  }
+
+  .definition:before {
     counter-increment: definition;
     content: "Definition " counter(definition) ".";
     font-weight: bold;
-    }
+  }
 
-    .lemma {
-    margin: 1.8em .8em;
-    /*border-left: 2px solid $grey-color;*/
-    padding: 0.1em 1em;
-    color: $grey-color;
-    font-style: regular;
-    background-color: $math-background;
-    }
-    .lemma:before {
-    counter-increment: lemma;
-    content: "Lemma " counter(definition) ".";
+  .notation:before {
+    counter-increment: notation;
+    content: "Notation " counter(notation) ".";
     font-weight: bold;
-    }
+  }
 
-    .proposition {
-    margin: 1.8em .8em;
-    /*border-left: 2px solid $grey-color;*/
-    padding: 0.1em 1em;
-    color: $grey-color;
-    font-style: regular;
-    background-color: $math-background;
-    }
-    .proposition:before {
+  .example:before {
+    counter-increment: example;
+    content: "Example " counter(example) ".";
+    font-weight: bold;
+  }
+
+  .proposition:before {
     counter-increment: proposition;
     content: "Proposition " counter(proposition) ".";
     font-weight: bold;
-    }
+  }
 
-    .corollary {
-    margin: 1.8em .8em;
-    /*border-left: 2px solid $grey-color;*/
-    padding: 0.1em 1em;
-    color: $grey-color;
-    font-style: regular;
-    background-color: $math-background;
-    }
-    .corollary:before {
-    counter-increment: corollary;
-    content: "Corollary " counter(corollary) ".";
+  .lemma:before {
+    counter-increment: lemma;
+    content: "Lemma " counter(definition) ".";
     font-weight: bold;
-    }
+  }
 
-    .theorem {
-    margin: 1.8em .8em;
-    /*border-left: 2px solid $grey-color;*/
-    padding: 0.1em 1em;
-    color: $grey-color;
-    font-style: italic;
-    background-color: $math-background;
-    }
-    .theorem:before {
+  .theorem:before {
     counter-increment: theorem;
     content: "Theorem " counter(theorem) ".";
     font-weight: bold;
-    }
+  }
+
+  .corollary:before {
+    counter-increment: corollary;
+    content: "Corollary " counter(corollary) ".";
+    font-weight: bold;
+  }
+
+  .figure:after {
+    font-family: plexMono;
+    display: flex;
+    line-height: 1.7;
+    margin: 0.8em 0 0 0.8em;
+    padding: 0;
+    justify-content: center;
+    counter-increment: figure;
+    content: "Figure " counter(figure) ".";
+  }
+
+  .quiver, .tikz {
+    margin: 1.8em 0em 0em 0.8em;
+    padding: 0em 1em 1em 0em;
+    display: flex;
+    flex-direction: wrap;
+    justify-content: center;
+  }
+
+  .quiverCaption, .tikzCaption {
+    flex-direction: wrap;
+    justify-content: center;
+  }
+  .quiverCaption:after, .tikzCaption:after {
+    font-size: 22px;
+    font-style: regular;
+    font-family: plexMono;
+    display: flex;
+    line-height: 1.7;
+    margin: -0.5em 0 0em 0.8em;
+    padding: 0;
+    justify-content: center;
+    counter-increment: figure;
+    content: "Figure " counter(figure) ".";
+  }
 
   .thanks {
     margin: 1.8em .8em;
-    /*border-left: 2px solid $grey-color;*/
+    /*border-left: 2px solid $gray;*/
     padding: 0.1em 1em;
     color: $grey-color;
+    font-size: 22px;
     font-style: regular;
     background-color: $thanks-background;
   }
+
 }
