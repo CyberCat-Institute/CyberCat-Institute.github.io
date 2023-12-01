@@ -20,4 +20,8 @@ collaborators:
     name : "André Videla"
     image : "/assets/images/people/andre-videla.jpg"
     link : "https://www.google.com"
+  -
+    name : "Daniele Palombi"
+    image : "/assets/images/people/daniele-palombi.jpg"
+    link : "https://dpl0a.github.io"
 ---
