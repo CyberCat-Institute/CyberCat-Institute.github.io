@@ -52,7 +52,8 @@ The practical modelling of such interactions is not obvious (and in fact motivat
 
 Through the environment we can feed in specific information we want. Concretely, we can expose the proposer and validators in a given episode exactly to the kind of reorg scenario mentioned above: Proposer and validators are facing differing information regarding the state of the chain.
 
-Besides simplifying the model, proceeding in this way has a further advantage. The analysis of optimal moves is static and only relative to the context. It thereby becomes much simpler.<sup>[^1]</sup>
+Besides simplifying the model, proceeding in this way has a further advantage. The analysis of optimal moves is static and only relative to the context. It thereby becomes much simpler.[^1]
+
 [^1]: This is not the only way to model the protocol in the current implementation. It is also possible to consider a timer explicitly as a state variable. This [branch](https://github.com/20squares/block-validation/tree/timer) contains such a model.
 
 ## Representing the protocol as a compositional game
@@ -484,7 +485,8 @@ For clarity, the diagram below illustrates the interacting of the different comp
 
 ![Information flow](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/oneepisode.png)
 
-One important thing to note is that this game representation has no inherent dynamics. This is due to a general principle behind the theory of open games as it does not have the notion of time.<sup>[^2]</sup>
+One important thing to note is that this game representation has no inherent dynamics. This is due to a general principle behind the theory of open games as it does not have the notion of time.[^2]
+
 [^2]: We should be more precise: In the current theory of open games there is always a clear notion of causality - who moves when and what is observed when by whom. The relevant "events" can be organized in a relation. This follows the overall categorical structure in which open games are embedded. We are working on a version of the theory where time - or other underlying structures like networks - are what open games are based on.
 
 This is a limitation in the sense that we cannot see the dynamics unfold. It also has advantages though: The incentive analysis has no side-effects; in functional programming terms, it acts like a pure function and is fully referential relative to some state of the game.
