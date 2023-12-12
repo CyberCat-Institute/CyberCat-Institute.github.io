@@ -25,4 +25,4 @@ This post isn’t the place to go into technical details, but what these things 
 
 Besides backprop, the things we have put on a uniform mathematical foundation using optics are value iteration, Bayesian inference, filtering, and the unnamed process that is the secret sauce of compositional game theory.
 
-This is the academic foundation that we start from. The question that comes next is, so what? How can this knowledge be exploited to solve actual problems? This is where the CyberCat Institute comes in, but I want to leave that for a future post. In the meantime, you can look at our [projects page](projects) to see the kinds of things we are working on right now.
+This is the academic foundation that we start from. The question that comes next is, so what? How can this knowledge be exploited to solve actual problems? This is where the CyberCat Institute comes in, but I want to leave that for a future post. In the meantime, you can look at our [projects page](/projects) to see the kinds of things we are working on right now.
