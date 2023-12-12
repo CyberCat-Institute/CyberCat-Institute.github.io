@@ -2,7 +2,10 @@
 layout: post
 title:  "A Software Engine For Game Theoretic Modelling - Part 2"
 author: Philipp Zahn
-categories: "game theory", "cryptoeconomics", "open game engine"
+categories: 
+     - game theory 
+     - cryptoeconomics
+     - open game engine
 excerpt: Some time ago, in a previous blog post, we introduced our software engine for game theoretic modelling. In this post, we expand more on how to apply the engine to use cases relevant for the Ethereum ecosystem. We will consider an analysis of a simplified staking protocol. Our focus will be on compositionality – what this means from the perspective of representing protocols and from the perspective of analyzing protocols.
 usemathjax: true
 ---
