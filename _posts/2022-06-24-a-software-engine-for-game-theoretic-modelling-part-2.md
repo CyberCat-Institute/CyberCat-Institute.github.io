@@ -26,17 +26,17 @@ In what follows, we give a short verbal summary of the protocol.
 
 To begin with, we model a chain as a (compositional) relation. The chain contains blocks with unique identifiers as well as voting weights. The weights correspond to votes by validators on the specific blocks contained in the chain. Here is an example of such a chain in the case of two validators:
 
-![Example chain for two validators](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/chain.png)
+![Example chain for two validators](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/chain.png)
 
 The staking protocol consists of episodes. Within each episode, which lasts for several time steps, a *proposer* decides to extend the chain by a further block. The proposer can decide to extend or not to extend it. If the proposer extends the chain, he chooses on which block to build. Consider the following example when the proposer extends the above chain:
 
-![Example chain for two validators and a new block proposed](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/extendedchain.png)
+![Example chain for two validators and a new block proposed](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/extendedchain.png)
 
 The new block he generates will have initially no votes attesting to this block being the legitimate successor. This assessment is conducted by two validators.
 
 These two validators observe the last stage of the chain before their episode starts and they observe a possible change to the chain made by the proposer within their episode. The validators can then vote on the block which they view as the legitimate successor. Here is the continued example from above:
 
-![Example chain for two validators, new block proposed, and voted on](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/extendedandvoted.png)
+![Example chain for two validators, new block proposed, and voted on](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/extendedandvoted.png)
 
 Both the proposer’s as well as the validators’ choices will be evaluated in the next episode. If the decisions they made, i.e. the building on a specific block by the proposer as well as the voting by the validators, is on the path to the longest weighted chain, they will receive a reward.
 
@@ -132,7 +132,7 @@ addBlock = [opengame|
 
 The following diagram summarizes the information flow in these building blocks.
 
-![Information flow in the building blocks](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/auxiliary.png)
+![Information flow in the building blocks](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/auxiliary.png)
 
 #### Decisions
 
@@ -192,13 +192,15 @@ validator name = [opengame|
 
 This open game is parameterized by a specific player (`name`). The information flow of the decision open games are depicted in in the next diagram:
 
-![](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/decisions.png)
+![Add block flow](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/decisions.png)
 
 #### Payoffs
 
 The central aspect of the protocol is how the payoffs of the different players are determined. For both proposers and validators we split the payoff components into two parts. First, we create open games which are mere accounting devices, i.e. they just update a player’s payoff.
 
-`updatePayoffValidator` (i) determines the value that an validator should receive conditional on his action being assessed as correct and (ii) updates the value for a specific validator. This open game is parameterized by a specific player (`name`).
+`updatePayoffValidator`: 
+1. determines the value that an validator should receive conditional on his action being assessed as correct and 
+2. updates the value for a specific validator. This open game is parameterized by a specific player (`name`).
 
 ```haskell
 updatePayoffValidator name fee  = [opengame|
@@ -348,7 +350,7 @@ validatorsPayment name1 name2 fee = [opengame|
 
 This concludes the blocks for generating payments. The information flow of these components is depicted in the following diagram:
 
-![Grouping of validators](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/payments.png)
+![Grouping of validators](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/payments.png)
 
 `validatorsGroupDecision`` groups all validators' decisions considered into one game. The output of this game is a map (in the programming sense) connecting the name of the validator with her/his decision.
 
@@ -405,7 +407,7 @@ Similarly, we chose the output type of the grouped validators with the intention
 
 The next diagram illustrates the composition of components and the information flow.
 
-![Information flow in the validators' group decision](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/groupdecision.png)
+![Information flow in the validators' group decision](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/groupdecision.png)
 
 ### Integrating the components towards one episode
 
@@ -480,7 +482,7 @@ oneEpisode p0 p1 a10 a20 a11 a21 reward fee = [opengame|
 
 For clarity, the diagram below illustrates the interacting of the different components and their information flow.
 
-![](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/oneepisode.png)
+![Information flow](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/oneepisode.png)
 
 One important thing to note is that this game representation has no inherent dynamics. This is due to a general principle behind the theory of open games as it does not have the notion of time.<sup>[^2]</sup>
 [^2]: We should be more precise: In the current theory of open games there is always a clear notion of causality - who moves when and what is observed when by whom. The relevant "events" can be organized in a relation. This follows the overall categorical structure in which open games are embedded. We are working on a version of the theory where time - or other underlying structures like networks - are what open games are based on.
@@ -516,7 +518,7 @@ initialContextLinear p a1 a2 reward successFee =
 
 This expression looks more complicated than it actually is. The first part, `(pure ()),(initialChainLinear, 3, initialMap)))`, determines the starting conditions of the situation we consider. That is, we provide the input parameters which `oneEpisode` expects from us. Among other things, this contains the initial chain we start with. Here, replicated from above as a reminder:
 
-![Example chain for two validators](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/chain.png)
+![Example chain for two validators](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/chain.png)
 
 The second part, `(\_ x -> feedPayoffs p a1 a2 reward successFee x)` describes a function which computes the payoff from the current action in the next period. Details of how this payoff is determined can be found under the implementation of `feedPayoffs`.
 
@@ -620,7 +622,7 @@ oneEpisodeAttack p0 p1 a10 a20 a11 a21 reward fee = [opengame|
 
 This simulates the situation where the malicious proposer from the episode before sends a block after the honest proposer from this episode has added his own block. As a result there are now two nodes in the chain with 0 votes on it. In other words, there are two contenders for the head of the chain. The chain at point in time looks like this:
 
-![Forked chain for two validators](../assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/attackchain.png)
+![Forked chain for two validators](/assetsPosts/2022-06-24-a-software-engine-for-game-theoretic-modelling-part-2/attackchain.png)
 
 The next steps are analogous to the analysis before, we define inputs and how the game continues. Lastly, we need to define strategies.
 
