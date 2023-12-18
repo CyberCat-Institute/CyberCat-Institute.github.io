@@ -1,0 +1,31 @@
+In this section we will give a compositional solution to the local safety problem in a global context in two steps:
+
+* First by turning the world into a functor $latex \hat{W} : FG \to \mathsf{Poset}$
+* Then by gluing this functor into a single poset $latex \int \hat{W}$ whose inequalities solve the problem of interest.
+
+First we define the functor.
+
+Given a world $latex W : G \to \mathsf{Mach}$, there is a functor
+$latex \hat{W} : FG \to \mathsf{Poset}$
+where
+
+    *  $latex FG$ is the free category on the graph $latex G$,
+    *  $latex \mathsf{Poset}$ is the category whose objects are posets and whose morphisms are monotone functions.
+
+Functors from a free category are uniquely defined by their image on vertices and generating edges.
+
+    *  For a vertex $latex x \in V(G)$, $latex \hat{W}(x) = \mathcal{P}(S_x)$,
+    *  for an edge $latex e : x \to y$, we define$latex \hat{W}(e): \mathcal{P}(S_x) \to \mathcal{P}(S_y)$ by
+    $latex  A \mapsto \blacksquare_{W(e)}(A)$
+
+Now for step two.
+
+Given a functor $latex \hat{W} : FG \to \mathsf{Poset}$ defined from a world $latex W$, the \textbf{global safety poset} is a poset $latex \int \hat{W}$ where 
+
+    *  elements are pairs $latex (x \in V(G), A \subseteq S_x)$,
+    *  $latex (x, A) \leq (y, B) \iff$
+    $latex \bigwedge_{f: x \to y \in FG} \hat{W} (f) (A) \subseteq B$
+
+Given a world $latex W : G \to \mathsf{Mach}$, a vertex $latex x \in V(G)$, and subsets $latex I,P \subseteq S_x$ then $latex I$ is locally safe in a global context if and only if there is an inequality
+    $latex (x,I) \subseteq (x,P)$ in the global safety poset $latex \int \hat{W}$.
+
