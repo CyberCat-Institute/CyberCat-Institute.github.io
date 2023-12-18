@@ -4,7 +4,7 @@ title: How to Stay Locally Safe in a Global World
 author: Jade Master
 categories: [AI safety, category theory]
 usemathjax: true 
-excerpt: Suppose your name is $x$ and you have a very important state machine that you cherish with all your heart. Because you love this state machine so much, you don't want it to malfunction and you have a subset which you consider to be safe. If your state machine ever leaves this safe space you are in big trouble so you ask the following question.
+excerpt: Suppose your name is x and you have a very important state machine that you cherish with all your heart. Because you love this state machine so much, you don't want it to malfunction and you have a subset which you consider to be safe. If your state machine ever leaves this safe space you are in big trouble so you ask the following question.
 ---
 
 Cross-posted from [Jade's blog](https://jadeedenstarmaster.wordpress.com/): parts [1](https://jadeedenstarmaster.wordpress.com/2023/12/06/how-to-stay-locally-safe-in-a-global-world/), [2](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-ii-defining-a-world-and-stating-the-problem/), [3](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-iii-the-global-safety-poset/)
@@ -31,15 +31,18 @@ or at least check safety up to an arbitrary time-step $n$ by computing this infi
 
 Unfortunately there is a big problem with this method! Your state machine does not exist in isolation. You have a friend whose name is $y$ with their own state machine $N_y : S_y \times \Sigma \to \mathcal{P} (S_y)$. $y$ has the personal freedom to run their state machine how they like but there are functions
 
-$$ N_{xy} : S_x \times \Sigma \to \mathcal{P}(S_y)$ and $N_{yx} : S_y \times \Sigma \to \mathcal{P}(S_x) $$
+$$ N_{xy} : S_x \times \Sigma \to \mathcal{P}(S_y) $$
+
+and
+
+$$ N_{yx} : S_y \times \Sigma \to \mathcal{P}(S_x) $$
 
 which allow states of your friend's machine to change the states of your own and vice-versa. Making matters worse, there is a whole graph $G$ whose vertices are your friends and whose edges indicate that the corresponding state machines may effect each other. How can you be expected to ensure safety under these conditions?
 
 But don't worry, category theory comes to the rescue. In the next sections I will:
 
-State my model of the world and the local-to-global safety problem for this model (Part II)
-
-Propose a solution to the local-to-global safety problem based on an enriched version of the Grothendieck construction (Part III)
+- State my model of the world and the local-to-global safety problem for this model (Part II)
+- Propose a solution to the local-to-global safety problem based on an enriched version of the Grothendieck construction (Part III)
 
 ## Defining a World and Stating the Problem
 
@@ -93,11 +96,11 @@ where
 Functors from a free category are uniquely defined by their image on vertices and generating edges.
 
 * For a vertex $x \in V(G)$, $\hat{W}(x) = \mathcal{P}(S_x)$,
-* for an edge $e : x \to y$, we define$\hat{W}(e): \mathcal{P}(S_x) \to \mathcal{P}(S_y)$ by $A \mapsto \blacksquare_{W(e)}(A)$
+* for an edge $e : x \to y$, we define $\hat{W}(e): \mathcal{P}(S_x) \to \mathcal{P}(S_y)$ by $A \mapsto \blacksquare_{W(e)}(A)$
 
 Now for step two.
 
-Given a functor $\hat{W} : FG \to \mathsf{Poset}$ defined from a world $W$, the \textbf{global safety poset} is a poset $\int \hat{W}$ where 
+Given a functor $\hat{W} : FG \to \mathsf{Poset}$ defined from a world $W$, the **global safety poset** is a poset $\int \hat{W}$ where 
 
 * elements are pairs $(x \in V(G), A \subseteq S_x)$,
 * $(x, A) \leq (y, B) \iff \bigwedge_{f: x \to y \in FG} \hat{W} (f) (A) \subseteq B$
