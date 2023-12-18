@@ -2,10 +2,12 @@
 layout: post
 title: How to Stay Locally Safe in a Global World 
 author: Jade Master
-categories: [AI Safety, Category Theory]
+categories: [AI safety, category theory]
 usemathjax: true 
-thanks: "Cross-posted from [Jade's blog](https://jadeedenstarmaster.wordpress.com/): parts [1](https://jadeedenstarmaster.wordpress.com/2023/12/06/how-to-stay-locally-safe-in-a-global-world/), [2](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-ii-defining-a-world-and-stating-the-problem/), [3](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-iii-the-global-safety-poset/)"
+excerpt: Suppose your name is $x$ and you have a very important state machine that you cherish with all your heart. Because you love this state machine so much, you don't want it to malfunction and you have a subset which you consider to be safe. If your state machine ever leaves this safe space you are in big trouble so you ask the following question.
 ---
+
+Cross-posted from [Jade's blog](https://jadeedenstarmaster.wordpress.com/): parts [1](https://jadeedenstarmaster.wordpress.com/2023/12/06/how-to-stay-locally-safe-in-a-global-world/), [2](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-ii-defining-a-world-and-stating-the-problem/), [3](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-iii-the-global-safety-poset/)
 
 ## Introduction
 
@@ -85,31 +87,26 @@ $$ \hat{W} : FG \to \mathsf{Poset} $$
 
 where
 
-    *  $FG$ is the free category on the graph $G$,
-    *  $\mathsf{Poset}$ is the category whose objects are posets and whose morphisms are monotone functions.
+* $FG$ is the free category on the graph $G$,
+* $\mathsf{Poset}$ is the category whose objects are posets and whose morphisms are monotone functions.
 
 Functors from a free category are uniquely defined by their image on vertices and generating edges.
 
-    *  For a vertex $x \in V(G)$, $\hat{W}(x) = \mathcal{P}(S_x)$,
-    *  for an edge $e : x \to y$, we define$\hat{W}(e): \mathcal{P}(S_x) \to \mathcal{P}(S_y)$ by
-    $ A \mapsto \blacksquare_{W(e)}(A)$
+* For a vertex $x \in V(G)$, $\hat{W}(x) = \mathcal{P}(S_x)$,
+* for an edge $e : x \to y$, we define$\hat{W}(e): \mathcal{P}(S_x) \to \mathcal{P}(S_y)$ by $A \mapsto \blacksquare_{W(e)}(A)$
 
 Now for step two.
 
 Given a functor $\hat{W} : FG \to \mathsf{Poset}$ defined from a world $W$, the \textbf{global safety poset} is a poset $\int \hat{W}$ where 
 
-    *  elements are pairs $(x \in V(G), A \subseteq S_x)$,
-    *  $(x, A) \leq (y, B) \iff$
-    $\bigwedge_{f: x \to y \in FG} \hat{W} (f) (A) \subseteq B$
+* elements are pairs $(x \in V(G), A \subseteq S_x)$,
+* $(x, A) \leq (y, B) \iff \bigwedge_{f: x \to y \in FG} \hat{W} (f) (A) \subseteq B$
 
 Given a world $W : G \to \mathsf{Mach}$, a vertex $x \in V(G)$, and subsets $I,P \subseteq S_x$ then $I$ is locally safe in a global context if and only if there is an inequality
-   $(x,I) \subseteq (x,P)$ in the global safety poset $\int \hat{W}$
+$(x,I) \subseteq (x,P)$ in the global safety poset $\int \hat{W}$
     
 My half-completed proof of this theorem involves a square of functors
 
 ![Correctness Square](/assetsPosts/2023-12-18-How to Stay Locally Safe in a Global World/commsquare.png)
 
 Going from right and then down, the first functor uses a Grothendieck construction to turn a world into a total state machine and then turns that state machine into it's global safety poset. Going down and then right follows the construction detailed in my past two posts. The commutativity of this diagram should verify correctness. I will explain all of this in more detail later. Thanks for tuning in today!
-
-
-
