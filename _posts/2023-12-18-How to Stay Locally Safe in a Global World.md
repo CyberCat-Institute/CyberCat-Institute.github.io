@@ -4,6 +4,7 @@ title: How to Stay Locally Safe in a Global World
 author: Jade Master
 categories: [AI Safety, Category Theory]
 usemathjax: true 
+thanks: "Cross-posted from [Jade's blog](https://jadeedenstarmaster.wordpress.com/): parts [1](https://jadeedenstarmaster.wordpress.com/2023/12/06/how-to-stay-locally-safe-in-a-global-world/), [2](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-ii-defining-a-world-and-stating-the-problem/), [3](https://jadeedenstarmaster.wordpress.com/2023/12/17/how-to-stay-locally-safe-in-a-global-world-part-iii-the-global-safety-poset/)"
 ---
 
 ## Introduction
