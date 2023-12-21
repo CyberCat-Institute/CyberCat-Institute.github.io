@@ -54,16 +54,16 @@ $$ e : X \times \Sigma \to \mathcal{P}(Y) $$
 
 A world is a morphism of directed graphs $W : G \to \mathsf{Mach}$.
 
-A world has a set $S_x$ for each vertex $x$ called the local state over $\mathbf{x}$ and for each edge $e :x \to y$ a function $W(e) : S_x \times \Sigma_e \to \mathcal{P}(S_y)$ representing the state machine connecting the local state over $x$ to the local state over $y$. Note that self edges are ordinary state machines from a local state to itself. An example World may be drawn as follows:
+A world has a set $S_x$ for each vertex $x$ called the local state over $\mathbf{x}$ and for each edge $e :x \to y$ a function $W(e) : S_x \times \Sigma_e \to \mathcal{P}(S_y)$ representing the state machine connecting the local state over $x$ to the local state over $y$. Note that self edges are ordinary state machines from a local state to itself. An example world may be drawn as follows:
 
 ![Example World](/assetsPosts/2023-12-18-How to Stay Locally Safe in a Global World/World.png)
 
 Definition: Given a world $W: G \to \mathsf{Mach}$, the total machine of $W$ is the state machine
-$\int W : \sum_{x \in V(G)} S_x \times \sum_{e \in E(G)} \to \mathcal{P}( \sum_{x \in V(G)} S_x )$ 
+$\int W : \sum_{x \in V(G)} S_x \times \sum_{e \in E(G)} \Sigma_e \to \mathcal{P}( \sum_{x \in V(G)} S_x )$ 
 
 given by
 
-$$ (s,x),(\tau,d) \mapsto \bigcup_{e: x \to y} F(e) (s, \tau) $$
+$$( (s,x),(\tau,d)) \mapsto \bigcup_{e: x \to y} F(e) (s, \tau) $$
 
 The notation $\int$ is used based on the belief that this is some version of the Grothendieck construction. Exactly which flavor will be left to future work. The transition function of this state machine comes from unioning the transition functions of all the state machines associated to edges originating in a vertex.
 
@@ -112,4 +112,4 @@ My half-completed proof of this theorem involves a square of functors
 
 ![Correctness Square](/assetsPosts/2023-12-18-How to Stay Locally Safe in a Global World/commsquare.png)
 
-Going from right and then down, the first functor uses a Grothendieck construction to turn a world into a total state machine and then turns that state machine into it's global safety poset. Going down and then right follows the construction detailed in my past two posts. The commutativity of this diagram should verify correctness. I will explain all of this in more detail later. Thanks for tuning in today!
+Going from right and then down, the first functor uses a Grothendieck construction to turn a world into a total state machine and then turns that state machine into it's global safety poset. Going down and then right follows the construction detailed in the last two sections. The commutativity of this diagram should verify correctness. I will explain all of this in more detail later. Thanks for tuning in today!
