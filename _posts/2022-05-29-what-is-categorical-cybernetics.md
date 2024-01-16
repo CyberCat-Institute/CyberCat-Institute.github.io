@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "What is categorical cybernetics?"
+title:  "What is Categorical Cybernetics?"
 author: Jules Hedges
 categories: "categorical cybernetics"
 excerpt: Categorical cybernetics, or CyberCat to its friends, is – no surprise – the application of methods of (applied) category theory to cybernetics. The  "category theory" part is clear enough, but the term "cybernetics" is notoriously fluid, and throughout history has meant more or less whatever the writer wanted it to mean. So, let’s lay down some boundaries.
