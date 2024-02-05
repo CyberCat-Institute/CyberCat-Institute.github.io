@@ -4,7 +4,7 @@ permalink: /projects/
 title: Projects
 projects:
   -
-    name: "Open Games Engine"
+    name: "Open Game Engine"
     description: "The [Open Game Engine](https://github.com/CyberCat-Institute/open-game-engine) is our flagship open source software for computational game theory. It is an embedded domain specific language that extends the functional programming language Haskell with a powerful syntax for defining games in a compositional way, and then running computational analyses on them."
     image: "/assets/images/open-games.png"
     link: "https://github.com/CyberCat-Institute/open-game-engine"

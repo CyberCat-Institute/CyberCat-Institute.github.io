@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "AI safety meets value chain integrity"
+title:  "AI Safety Meets Value Chain Integrity"
 author: Jules Hedges
 categories: 
-    - AI
+    - AI Safety
     - economics
     - supply chains
 excerpt: Advanced AI making economic decisions in supply chains and markets creates poorly-understood risks, especially by undermining the fundamental concept of individuality of agents. We propose to research these risks by building and simulating models.

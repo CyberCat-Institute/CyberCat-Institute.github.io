@@ -4,17 +4,16 @@ title: About
 permalink: /about/
 ---
 
+We are an EU-based nonprofit organisation working on pure and applied **research** and **open source software** development. We are interested in all aspects of complex systems, optimization, control and intelligence, but our primary focus is on **machine learning** and **economic theory**.
+
+We are neither academic nor startup, but at a nexus between both. Our work is motivated by both curiosity and urgent social need.
+
+## What is cybernetics?
+
+The popular understanding of the word “cybernetics” has drifted over time to mean biotechnology, but its original meaning in the 1960s was the interdisciplinary study of controlling complex systems, in fields such as ecology, economics and computer science. Due to the urgent need for an interdisciplinary approach to 21st-century problems, and the emergence of category theory as a new mathematical foundation, we believe the time is now right to try to reclaim the original dream of cybernetics, and its name.
 
 ## What is categorical cybernetics?
 
-**Category theory** is a field of pure mathematics that arose out of topology and geometry. **Applied category theory** (ACT) is a recently-emerged interdisciplinary field that applies methods of category theory to practical problems, achieving industrial success in fields such as quantum computing and natural language processing.
+**Category theory** is a field of mathematics that arose out of topology and geometry. **Applied category theory** (ACT) is a recently-emerged interdisciplinary field that applies methods of category theory to practical problems, achieving industrial success in fields such as quantum computing and natural language processing.
 
-**Categorical cybernetics**, or **CyberCat** for short, is a sub-field of ACT focussing on optimisation and control, using a small set of category-theoretic tools such as **optics** and **open games**.
-
-## Cybernetics, seriously?!
-
-The popular understanding of the word “cybernetics” has drifted over time to mean biotechnology, but its original meaning in the 1960s was the interdisciplinary study of controlling complex systems, in fields such as ecology, economics and computer science. Due to the urgent need for an interdisciplinary approach to 21st-century problems, and the rise of category theory as a new mathematical foundation, we believe the time is now right to try to reclaim the original dream of cybernetics, and its name.
-
-## A different way to organise research
-
-We are a nonprofit research institute, neither academia nor business but at a nexus between both. Our work is motivated by both pure curiosity and urgent social need. Our mission requires people with very different backgrounds working closely together, cutting across traditional academic boundaries. We also want to develop high quality software, so we need software engineers to be part of the core team.
+**Categorical cybernetics**, or **CyberCat** for short, is a sub-field of ACT focussing on optimization and control, using a small set of category-theoretic tools such as **optics** and **open games**.
