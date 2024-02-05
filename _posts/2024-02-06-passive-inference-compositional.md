@@ -2,9 +2,9 @@
 layout: post
 title: Passive Inference is Compositional, Active Inference is Emergent 
 author: Jules Hedges
-categories: 
+categories: [probability, active inference, AI]
 usemathjax: true 
-excerpt: 
+excerpt: This post is a writeup of a talk I gave at the Causal Cognition in Humans and Machines workshop in Oxford, about some work in progress I have with Toby Smithe. To a large extent this is my take on the theoretical work in Toby's PhD thesis, with the emphasis shifted from category theory and neuroscience to numerical computation and AI. In the last section I will outline my proposal for how to build AGI.
 ---
 
 This post is a writeup of a talk I gave at the [Causal Cognition in Humans and Machines](https://amcs-community.org/events/causal-cognition-humans-machines/) workshop in Oxford, about some work in progress I have with [Toby Smithe](https://tsmithe.net/). To a large extent this is my take on the theoretical work in Toby's PhD thesis, with the emphasis shifted from category theory and neuroscience to numerical computation and AI. In the last section I will outline my proposal for how to build AGI.
