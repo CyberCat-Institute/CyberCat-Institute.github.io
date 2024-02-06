@@ -19,9 +19,9 @@ An important fact about Markov kernels is that they can be composed. Given a Mar
 
 $$ \mathbb P_{\varphi; \psi} [z \mid x] = \int \mathbb P_\varphi [y \mid x] \cdot \mathbb P_\psi [z \mid y] \, dy $$
 
-This formula is sometimes given the unnecessarily fancy name [Chapman-Kolmogorov equation](https://en.wikipedia.org/wiki/Chapman%E2%80%93Kolmogorov_equation). If we represent kernels by stochastic matrices then this is exactly matrix multiplication; if they are Gaussian tensors then it's a similar but slightly more complicated operation. Doing exact probability for anything more complicated is extremely hard in practice because of the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality).
+This formula is sometimes given the unnecessarily fancy name [Chapman-Kolmogorov equation](https://en.wikipedia.org/wiki/Chapman%E2%80%93Kolmogorov_equation). If we represent kernels by stochastic matrices, then this is exactly matrix multiplication; if they are Gaussian tensors, then it's a similar but slightly more complicated operation. Doing exact probability for anything more complicated is extremely hard in practice because of the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality).
 
-If we represent kernels by Monte Carlo funtions then composition is literally just function composition, which is extremely convenient. That is, we can just send particles through a chain of functions and they'll come out with the right distribution - this fact is basically what the term "Monte Carlo" actually means.
+If we represent kernels by Monte Carlo funtions, then composition is literally just function composition, which is extremely convenient. That is, we can just send particles through a chain of functions and they'll come out with the right distribution - this fact is basically what the term "Monte Carlo" actually means.
 
 A special case of this is an ordinary (non-conditional) probability distribution, which can be usefully thought of as a Markov kernel whose domain is a single point. Given a distribution $\mathbb P_\pi [x]$ and a kernel $\mathbb P_\varphi [y \mid x]$ we can obtain a distribution $\pi; \varphi$ on $y$, known as the *pushforward distribution*, by integrating out $x$:
 
@@ -29,7 +29,7 @@ $$ \mathbb P_{\pi; \varphi} [y] = \int \mathbb P_\pi [x] \cdot \mathbb P_\varphi
 
 ## Bayesian inversion
 
-Suppose we have a Markov kernel $\mathbb P_\varphi [y \mid x]$ are we are shown a sample of its output, but we can't see what the input was. What can we say about the input? To do this, we must start from some initial belief about how the input was distributed: a *prior* $\mathbb P_\pi [x]$. After observing $y$, [Bayes' law](https://en.wikipedia.org/wiki/Bayes%27_theorem) tells us how we should modify our belief to a *posterior distsribution* that accounts for the new evidence. The formula is
+Suppose we have a Markov kernel $\mathbb P_\varphi [y \mid x]$ and we are shown a sample of its output, but we can't see what the input was. What can we say about the input? To do this, we must start from some initial belief about how the input was distributed: a *prior* $\mathbb P_\pi [x]$. After observing $y$, [Bayes' law](https://en.wikipedia.org/wiki/Bayes%27_theorem) tells us how we should modify our belief to a *posterior distsribution* that accounts for the new evidence. The formula is
 
 $$ \mathbb P [x \mid y] = \frac{\mathbb P_\varphi [y \mid x] \cdot \mathbb P_\pi [x]}{\mathbb P_{\pi; \varphi} [y]} $$
 
@@ -79,7 +79,7 @@ Doing this requires a major generalisation of our loss function. This was found 
 
 The idea is to define the loss of an approximate inverse to a kernel $\varphi : X \to Y$ in a *context* that includes not only a prior distribution on $X$, but also a (generally nonlinear) function $k$ called the *continuation*, that transforms probability distributions on $Y$. The continuation is a black box that describes how predictions transform into observations. Then when $y$ appears free in the expressions for KL divergence and variational free energy, we integrate it over the distribution $k (\pi; \varphi)$.
 
-So for our composite kernel $\varphi; \psi$, as well as the prior $\pi$ on $X$ we also have a continuation $k$ that transforms distributions on $Z$. In order to optimise the parameters $(p, q)$ in this context, we divide into two sub-problems:
+So for our composite kernel $\varphi; \psi$, as well as the prior $\pi$ on $X$ we also have a continuation $k$ that transforms distributions on $Z$. In order to optimise the parameters $(p, q)$ in this context, we divide them into two sub-problems:
 
 - Optimise the parameters $p$ for $\varphi$ in the context given by the prior $\pi$ on $X$ and the continuation $k'$ on $Y$ given by $k' (\sigma) = k (\sigma; \psi); \psi'_\sigma (q)$
 - Optimise the parameters $q$ for $\psi$ in the context given by the prior $\pi; \varphi$ on $Y$ and the continuation $k$ on $Z$
@@ -110,7 +110,7 @@ This lets us add one more piece to the puzzle, namely *reinforcement learning*. 
 
 I am not a neuroscientist, but I understand it is at least plausible that the compositional structure of the mammalian cortex exactly reflects the compositional structure of deep active inference. The cortex is shaped (in the sense of connectivity) approximately like a pyramid, with both sensory and motor areas at the bottom. In particular, the brain is *not* a [series of tubes](https://en.wikipedia.org/wiki/Series_of_tubes) with sensory signals going in at one end and motor signals coming out at the other end. Obviously the basic pyramid shape must be modified with endless ad-hoc modifications at every scale developed by evolution for various tasks. So following Hofstadter's [Ant Fugue](http://bert.stuy.edu/pbrooks/fall2014/materials/HumanReasoning/Hofstadter-PreludeAntFugue.pdf), I claim *the cortex is shaped like an anthill*.
 
-The idea is that the hierarchical structure is roughly an *abstraction* hierarchy. Predictions (aka commands) $\mathbb P_\varphi [y \mid x]$ travel down the hierarchy (towards sensorimotor areas), transforming predictions at a higher level of abstraction $\mathbb P_\pi [x]$ into predictions at a lower level of abstraction $\mathbb P_{\pi; \varphi} [y]$. Inferences $\mathbb P_{\varphi^\dagger_\pi} [x \mid y]$ travel up the hiererachy (away from sensorimotor areas), transforming observations at a lower level of abstraction $\mathbb P_\rho [y]$ into observations at a higher level of abstraction $\mathbb P_{\rho; \varphi^\dagger_\pi} [x]$.
+The idea is that the hierarchical structure is roughly an *abstraction* hierarchy. Predictions (aka commands) $\mathbb P_\varphi [y \mid x]$ travel down the hierarchy (towards sensorimotor areas), transforming predictions at a higher level of abstraction $\mathbb P_\pi [x]$ into predictions at a lower level of abstraction $\mathbb P_{\pi; \varphi} [y]$. Inferences $\mathbb P_{\varphi^\dagger_\pi} [x \mid y]$ travel up the hierarchy (away from sensorimotor areas), transforming observations at a lower level of abstraction $\mathbb P_\rho [y]$ into observations at a higher level of abstraction $\mathbb P_{\rho; \varphi^\dagger_\pi} [x]$.
 
 Given this circularity, with observations depending on predictions recursively through many layers, I expect that the system will learn to predict *sequences* of inputs (as any recursive neural network does, and notably *transformers* do extremely successfully) - and also *sequences of sequences* and so on. I predict that stability will increase up the hierarchy - that is, updates will usually be smaller at higher levels - so that at least conceptually, higher levels run on a slower timescale than lower levels. This comes back to ideas I first read almost 15 years ago in the book [On Intelligence](https://us.macmillan.com/books/9780805078534/onintelligence) by Jeff Hawkins and Sandra Blakeslee.
 
@@ -118,7 +118,7 @@ Conceptually, this is exactly the same idea I wrote about in [chapter 9](https:/
 
 If both sensory and motor areas are at the bottom of the hierarchy, this raises the obvious question of what is at the *top*. It probably has something to do with long term memory formation, but it is almost impossible to not be thinking about *consciousness* at this point. I'm going to step back from this so that the hot takes in this post don't reach their ignition temperature before the next paragraph.
 
-The single hottest take that I geuinely believe is that *deep variational reinforcement learning is all you need*, and is the only conceptually plausible route to what is sometimes sloppily called "AGI" and what I refer to in private as "true intelligence".
+The single hottest take that I genuinely believe is that *deep variational reinforcement learning is all you need*, and is the only conceptually plausible route to what is sometimes sloppily called "AGI" and what I refer to in private as "true intelligence".
 
 I should mention that none of my collaborators is as optimistic as me that *deep variational reinforcement sequence learning is all you need*. Uniquely among my collaborators, I am a hardcore connectionist and I believe good old fashioned symbolic methods have no essential role to play. Time will tell.
 
