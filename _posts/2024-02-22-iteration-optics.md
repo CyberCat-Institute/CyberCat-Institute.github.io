@@ -22,7 +22,7 @@ $$ \mathbf{Optic} (\mathcal C) \left( \binom{X}{X'}, \binom{Y}{Y'} \right) = \in
 
 which amounts to saying that an optic $\binom{X}{X'} \to \binom{Y}{Y'}$ is an equivalence class of triples
 
-$$ (M : \mathcal C, f : X \to M \otimes X', f' : M \otimes Y' \to X') $$
+$$ (M : \mathcal C, f : X \to M \otimes Y, f' : M \otimes Y' \to X') $$
 
 I'm pretty sure everything in this post works for other categories of bidirectional processes such as mixed optics and dependent lenses, this is just a setting to write it down which is both convenient and not at all obvious.
 
