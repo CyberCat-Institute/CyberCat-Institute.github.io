@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Stocks, Flows Transformations: The Cybernetic Economy"
+title: "Stocks, Flows, Transformations: The Cybernetic Economy"
 author: Oliver Beige
 date: 2024-03-08
 categories: [economics, cybernetics]
