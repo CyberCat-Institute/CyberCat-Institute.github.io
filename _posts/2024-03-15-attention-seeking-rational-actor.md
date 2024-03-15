@@ -3,14 +3,14 @@ layout: post
 title: "The Attention-Seeking Rational Actor"
 author: Oliver Beige
 date: 2024-03-15
-categories: [economics, cybernetics]
+categories: [economics]
 usemathjax: false 
 excerpt: "In which we establish an underlying model for human behavior and claim that all economies are just a variation of the attention economy."
 ---
 
 Cross-posted from [Oliver's Substack blog, EconPatterns](https://econpatterns.substack.com/p/the-attention-seeking-rational-actor)
 
-The fundamental economic exchange is surprises for eyeballs.
+*The fundamental economic exchange is surprises for eyeballs.*
 
 Modern economics is built around understanding the mechanics of market exchange, but it hasn't always been that way. The etymological root of economics, the Greek [oikonomia](https://www.etymonline.com/word/economy) points toward household management, or husbandry of the (largely self-sufficient) estate, the oikos. Today we would call it home economics.
 
@@ -18,7 +18,7 @@ After discussing the fundamental grid of the economy in the [last post](2024-03-
 
 But they also differ from the various attempts to bound the rationality assumptions of textbook economics in some way, be it in the Carnegie "[satisficing](https://en.wikipedia.org/wiki/Satisficing)" or in the Berkeley "[behavioral](https://en.wikipedia.org/wiki/Behavioral_economics)" tradition. It nevertheless incorporates both, in addition to a variety of other behavioral quirks which we might not associate with the economic realm. 
 
-The major reason to tweak our behavioral assumptions is that to design economic structures we need a coherent framework for dealing with a variety of settings in which we need to be able to apply varying set of behavioral assumptions while still trying to stay coherent.
+The major reason to tweak our behavioral assumptions is that to design economic structures we need a coherent framework for dealing with a variety of settings in which we need to be able to apply a varying set of behavioral assumptions while still trying to stay coherent.
 
 So it’s not so much a behavioral assumption but a template for developing context-specific behavioral assumptions — or in other words, a design pattern. Humans behave differently in different social settings, and we should be able to pick the right model for the right circumstances, but still be able to treat it as a special instantiation of a shared underlying pattern.
 
@@ -30,13 +30,13 @@ So let’s grab our opening statement and take it apart.
 
 # Eyeballs
 
-"Eyeballs" is marketing vernacular for attention. The term can be taken quite literally —there are devices that track eyeball movement to find out how much screentime is spent staring at ads. But for the most part I will use it metaphorically as the cognitive effort devoted to a task.
+"Eyeballs" is marketing vernacular for attention. The term can be taken quite literally — there are devices that track eyeball movement to find out how much screentime is spent staring at ads. But for the most part I will use it metaphorically as the cognitive effort devoted to a task.
 
 It is perfectly fine to assume away cognitive limitations in a wide variety of circumstances. It simplifies our model significantly. It deflects accusations that a given policy claim is the outcome of an opportunistically chosen (boundedly rational) behavioral model rather than an underlying economic force. And in many scenarios it creates good-enough predictions for the task at hand.
 
 Assumptions are simplifications that ideally give us more gain in parsimony than loss in predictive accuracy. As long as that’s what they do, they do their job.
 
-But there are also situations where such an simplifying assumption produces results that stray too far from the observable reality, and we need to have a plan how we want to adjust the behavioral model in those situations.
+But there are also situations where such an simplifying assumption produces results that stray too far from the observable reality, and we need to have a plan for how we want to adjust the behavioral model in those situations.
 
 A fair starting assumption is to expect that the economic actor will allocate cognitive resources economically and allocate the most attention to those tasks where she expects the most bang for the buck. And that brings us to the other part of the statement.
 
@@ -60,9 +60,9 @@ Loosely translated, positive surprise is beneficial — something worth seeking 
 
 This has clear connotations to the behavioral assumption of risk preference, and this connection definitely warrants further attention — risk is a transferable economic commodity — but it also gives us the additional angle that planning is a vehicle to mitigate negative surprise for individual actors, and contracting is a vehicle to mitigate negative surprise for collective action, including the canonical form of collective action: the organization (which will be at the center of next week’s post).
 
-A lot of this will be fleshed out in the weeks to come, and some of the jumping-off points should already be apparent. Surprise gives us the opportunity to invoke both information entropy and ultimately thermodynamic entropy. But as already mentioned, this newsletter will only use these ideas conceptually, and point towards formal treatments in their respective literatures.
+A lot of this will be fleshed out in the weeks to come, and some of the jumping-off points should already be apparent. Surprise gives us the opportunity to invoke both information entropy and ultimately thermodynamic entropy. But as already mentioned, this series will only use these ideas conceptually, and point towards formal treatments in their respective literatures.
 
-Design is a guided trial-and-error process where judgment calls have to be made about the structure of the problem, about splitting it into its constituent part and putting the parts back together in the hope that no unwanted interaction effects emerge, about taking requirements and putting them in an order, about defining and resolving contingencies and dependencies, about the level of detail at which a problem needs to be resolved, at which precision, and how far into the future.
+Design is a guided trial-and-error process where judgment calls have to be made about the structure of the problem, about splitting it into its constituent parts and putting the parts back together in the hope that no unwanted interaction effects emerge, about taking requirements and putting them in an order, about defining and resolving contingencies and dependencies, about the level of detail at which a problem needs to be resolved, at which precision, and how far into the future.
 
 For this we need a flexible model of behavioral assumptions that can be adjusted to fit the task at hand, that can be experimented with. "Surprises for eyeballs", or in other words, "secrets for attention", gives us exactly that.
 
@@ -78,9 +78,9 @@ But how do we find out if a car is a lemon? And how do we insure ourselves again
 
 In the same sense of the stranded-in-the-desert example above, the process of finding out is a discovery process except with opposite signs. It’s a sequence of successes terminated by a failure — which is true for all machines: they run until they break down.
 
-But there’s an inevitable random element to this process, and even if we can assume that lemon-ness correlates negatively with longevity, that relationship is far from deterministic. We cannot conclude with certainty from the time of failure whether the car was a lemon — of even if the prior owner knew about it lemon-ness.
+But there’s an inevitable random element to this process, and even if we can assume that lemon-ness correlates negatively with longevity, that relationship is far from deterministic. We cannot conclude with certainty from the time of failure whether the car was a lemon — even if the prior owner knew about its lemon-ness.
 
-This simple recognition has a wide array of ramifications worth taking apart in detail, because most of them are central to economic design — not only of economic engines like markets, auction, recommenders or reputation engines, but also to the design of economic institutions. Notoriously, the business model of the Roman Catholic Church is that of a certifier of good conduct: a good old-fashioned reputation engine. 
+This simple recognition has a wide array of ramifications worth taking apart in detail, because most of them are central to economic design — not only of economic engines like markets, auctions, recommenders or reputation engines, but also to the design of economic institutions. Notoriously, the business model of the Roman Catholic Church is that of a certifier of good conduct: a good old-fashioned reputation engine. 
 
 The tl;dr of this excursion is that almost all goods are experience goods in that their value only becomes apparent when they are consumed, and the consumption harbors the possibility for surprise, positive or negative.
 
