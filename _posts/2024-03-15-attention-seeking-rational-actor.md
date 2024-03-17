@@ -72,7 +72,7 @@ There’s an obvious objection to this treatment, and it’s a fair one. "Surpri
 
 Let me use George Akerlof’s famous essay on the [market for lemons](https://www.jstor.org/stable/1879431) to show why even in a world of a one-off transfer of a physical object for a simultaneous transfer of a monetary equivalent is still a special case of an attention economy full of surprises.
 
-Akerlof’s paper kicked of the field of information economics, and is most widely associated with introducing the concept of asymmetric information. But as the second half of its title suggests, it’s actually about quality competition (a "lemon" being a colloquial term for a used car of poor quality), and the information angle is about the inability of conveying this quality — especially about the inability of an owner of a high-quality car to establish that his car is not a lemon.
+Akerlof’s paper kicked off the field of information economics, and is most widely associated with introducing the concept of asymmetric information. But as the second half of its title suggests, it’s actually about quality competition (a "lemon" being a colloquial term for a used car of poor quality), and the information angle is about the inability of conveying this quality — especially about the inability of an owner of a high-quality car to establish that his car is not a lemon.
 
 But how do we find out if a car is a lemon? And how do we insure ourselves against the risk of acquiring a lemon? By finding out.
 
