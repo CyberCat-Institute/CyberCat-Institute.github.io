@@ -14,7 +14,7 @@ The paper is about *structured learning* and it proposes a big generalisation of
 
 What the paper points out is that the whole of geometric deep learning can be massively generalised from group actions to arbitrary (co)algebras of functors and (co)monads. From there you can easily re-specialise for specific applications. For example, if your training data is vectorisation of source code of a programming language, you can encode the structure of that language's source grammar into your architecture in a virtually mechanical way.
 
-Suffice to say, I'm *very* excited about this idea. This could be a watershed moment for applied category theory in general, and it happens to be something that's right next door to us - the paper heavily uses categories of parametrised morphisms, one of the two building blocks of categorical cybernetics. I'm also sure it has a good chance to make a lot of money for Symbolica's investors, but I'm far more interested in doing something more *useful* with it instead.
+Suffice to say, I'm *very* excited about this idea. This could be a watershed moment for applied category theory in general, and it happens to be something that's right next door to us - the paper heavily uses categories of parametrised morphisms, one of the two building blocks of categorical cybernetics. I'm also sure it has a good chance to make a lot of money for Symbolica's investors, but I'm far more interested in using it for social good.
 
 ![Books](/assetsPosts/2024-03-18-learning-invariant-preferences/eugenio-mazzone-6ywyo2qtaZ8.jpg)
 
