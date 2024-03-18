@@ -5,10 +5,8 @@ author: Jules Hedges
 date: 2024-03-18
 categories: [deep learning, reinforcement learning, AI safety]
 usemathjax: false 
-excerpt: 
+excerpt: "A system whose architecture has invariant preferences will act in a way to bring about or avoid certain states of the world, no matter what it learns. A lot of people have already put a lot of thought into the issue of good and bad world-states, including very gnarly issues of how to agree on what they should be - what I'm proposing is a technological missing link, how to bridge from that level of abstraction to low-level neural network architectures."
 ---
-
-# Learning with structural invariants
 
 It's been a busy few weeks in the world of category theory for deep learning. First of all come the preprint [Categorical Deep Learning: An Algebraic Theory of Architectures](https://arxiv.org/abs/2402.15332) from authors at [Symbolica](https://www.symbolica.ai/) and [DeepMind](https://deepmind.google/), including our friend [Bruno](https://www.brunogavranovic.com/). And then hot on the heels of the paper, Symbolica raised a *big* investment round based largely on applications of the ideas in the paper.
 
@@ -17,6 +15,8 @@ The paper is about *structured learning* and it proposes a big generalisation of
 What the paper points out is that the whole of geometric deep learning can be massively generalised from group actions to arbitrary (co)algebras of functors and (co)monads. From there you can easily re-specialise for specific applications. For example, if your training data is vectorisation of source code of a programming language, you can encode the structure of that language's source grammar into your architecture in a virtually mechanical way.
 
 Suffice to say, I'm *very* excited about this idea. This could be a watershed moment for applied category theory in general, and it happens to be something that's right next door to us - the paper heavily uses categories of parametrised morphisms, one of the two building blocks of categorical cybernetics. I'm also sure it has a good chance to make a lot of money for Symbolica's investors, but I'm far more interested in doing something more *useful* with it instead.
+
+![Books](/assetsPosts/2024-03-18-learning-invariant-preferences/eugenio-mazzone-6ywyo2qtaZ8.jpg)
 
 # Invariant preferences
 
