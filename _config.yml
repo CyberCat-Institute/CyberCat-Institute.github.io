@@ -106,4 +106,4 @@ jekyll-archives:
 
 # jekyll-paginate
 paginate_path: /posts/:num/
-paginate: 5
+paginate: 15
