@@ -3,7 +3,7 @@ layout: post
 title: Iteration with Optics 
 author: Jules Hedges
 date: 2024-02-22
-categories: [category theory]
+categories: [category theory, categorical cybernetics]
 usemathjax: true 
 excerpt: "In this post I'll describe the theory of how to add iteration to categories of optics. Iteration is required for almost all applications of categorical cybernetics beyond game theory, and is something we've been handling only semi-formally for some time. The only tool we need is already one we have inside the categorical cybernetics framework: parametrisation weighted by a lax monoidal functor. I'll end with a conjecture that this is an instance of a general procedure to force states in a symmetric monoidal category."
 ---
