@@ -64,7 +64,7 @@ Beyond the recurring reorganizations typically triggered by underperformance, co
 
 But other than the recognition that markets, organizations, and the boundary inbetween are subject to design choices which ostensibly influence performance, can we offer another explanation for how to split a supply network into its constituent parts other than the Coasean "[costs of carrying out the exchange transactions in the open market](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1468-0335.1937.tb00002.x)"?
 
-To reduce the work of half a dozen Nobelists including Ronald Coase and Oliver Williamson to a tweet-length statement (which might itself evolve into a pattern), the make-or-buy decision boils down the choice between cost and control.
+To reduce the work of half a dozen Nobelists including Ronald Coase and Oliver Williamson to a tweet-length statement (which might itself evolve into a pattern), the make-or-buy decision boils down to the choice between cost and control.
 
 Expressed in another way, more exactly expressed in accounting terms, the cost of holding control over the production process vs the cost of losing control over it.
 
