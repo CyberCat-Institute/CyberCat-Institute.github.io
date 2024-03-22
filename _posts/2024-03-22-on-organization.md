@@ -38,7 +38,7 @@ The laws by which we draw these boundaries, consciously or habitually, share som
 
 For the economic sphere, which forms our primary concern, Oliver Williamson has established the fundamental dichotomy in the title of his first book: [markets vs hierarchies](https://archive.org/details/marketshierarchi00will), as shorthand for activities across firms vs activities within firms.
 
-But in both governance mechanisms (to appropriate the title of Williamson's [final book(https://archive.org/details/mechanismsofgove0000will)), these labels hide some intricate machinery under the hood: “hierarchy” might be the canonical form of structuring interactions within, and “market” for interactions across organizations. But these terms contain a multitude of moving parts, all of which are subject to a myriad of design decisions.
+But in both governance mechanisms (to appropriate the title of Williamson's [final book](https://archive.org/details/mechanismsofgove0000will)), these labels hide some intricate machinery under the hood: "hierarchy" might be the canonical form of structuring interactions within, and "market" for interactions across organizations. But these terms contain a multitude of moving parts, all of which are subject to a myriad of design decisions.
 
 Hierarchy is the canonical reporting structure for any larger organization. It's ubiquitous enough that we can use the two terms synonymously, even if they're not perfectly identical. It takes on the form of an upside-down tree (in the [graph-theoretic sense](https://en.wikipedia.org/wiki/Tree_(graph_theory))), with its root node at the top.
 
@@ -80,7 +80,7 @@ But the supplier knows this and can withhold deliveries strategically, essential
 
 # Organizations as belief structures
 
-But can we abstract away from the purely economic — most organizations are not in their intent economic — and express this avoidance of negative surprise as a design pattern for drawing the boundaries around organizations, or viewed from the other end: how to split a network of interactions social, political, or economic, into coherent clusters which we might want to call organizations or, more specifically, companies, parties, states, religious communities?
+But can we abstract away from the purely economic — most organizations are not in their intent economic — and express this avoidance of negative surprise as a design pattern for drawing the boundaries around organizations, or viewed from the other end: how to split a network of interactions, social, political, or economic, into coherent clusters which we might want to call organizations or, more specifically, companies, parties, states, religious communities?
 
 In the world I’ve drawn so far, the need for design (and the need to capture them in design patterns) arises from the myriad of moving parts that require design choices on multiple levels: we have to choose between market and hierarchy, once we choose hierarchy we have to choose the structure of the hierarchy, including its governance structure, and another level down we have to decide on the shape of each reporting relationship, including who gets to sit on each end.
 
@@ -96,7 +96,7 @@ The third fundamental problem of organization is to decide which direction is fo
 
 All organizations have to resolve this goal conflict — literally “where do we go from here?” — or risk breaking up. Or expressed differently, the tectonic rifts between factions occur where these goal conflicts are unresolvable. 
 
-Using another pattern, the paradigm of traditional industrial organization introduced by Ed Chamberlin and applied by Joe Bain, "[structure, conduct, performance](https://archive.org/details/industrialorgani00bain)" in a more general translation as "given the situation we’re in, of all the options available, which courses of action are the ones that promise the most success?"
+Using another pattern, the paradigm of traditional industrial organization introduced by Ed Chamberlin and applied by Joe Bain, "[structure, conduct, performance](https://archive.org/details/industrialorgani00bain)" is a more general translation as "given the situation we’re in, of all the options available, which courses of action are the ones that promise the most success?"
 
 Applying this paradigm requires coming to an agreement on a mapping between actions (conduct) and future outcomes (performance) given a set of starting conditions both internal and external (structure). This mapping requires expressing and ranking subjective expectations of conditional futures: beliefs (as opposed to objective probabilities in the statistical nomenclature). Where these beliefs diverge sufficiently, coordinating efforts within an organization is no longer feasible.
 
