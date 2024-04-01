@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Colimits of selection functions
+title: Colimits of Selection Functions
 author: Jules Hedges
 date: 2024-04-01
 categories: [category theory, game theory]
