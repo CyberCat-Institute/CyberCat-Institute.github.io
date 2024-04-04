@@ -34,7 +34,7 @@ There is an inevitable urge to remedy this shortcoming with the magic potion of 
 
 This is illusory of course to anyone attuned to the operational details of supply chain, not only because these pundits habitually underestimate by several orders of magnitude just how much operational raw data is out there, most of which is of no use to anyone but the data owner, but also because the countervailing demands of privacy and transparency (usually leading to the conundrum of each side demanding transparency from the other party but insisting on privacy for oneself) will inevitably lead to privacy winning out, except in those cases where the more powerful actor can compel less powerful actors to disclose their secrets.
 
-![Container ship](/assetsPosts/2024-04-04-value-chain-integrity/img1.jpg)
+![Container ship](/assetsPosts/2024-04-04-value-chain-integrity/img1.webp)
 
 # Supply chain and value chain integrity
 
