@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Error location tracking via dependent lenses
+title: Modular Error Reporting with Dependent Lenses
 author: Andre Videla
-categories: [dependent lenses, parsing, compiler, error reporting, idris, dependent types]
+categories: [software engineering, dependent lenses, parsing, compiler]
 excerpt: Dependent lenses are useful for general-purpose programming, but in which way exactly? This post demonstrates the use of dependent lenses as input/output-conversion processes, using parsing and error location reporting as a driving example.
-image: assetsPosts/2024-04-08-error-location-tracking/lens.png
+image: assetsPosts/2024-04-08-error-location-tracking/lens2.png
 usemathjax: true
 ---
 
 A big part of programming language design is in feedback delivery. One aspect of feedback is parse errors. Parsing is a very large area of research and there are new developments from industry that make it easier and faster than ever to parse files. This post is about an application of dependent lenses that facilitate the job of reporting error location from a parsing pipeline.
 
-## What is parsing & Error reporting
+## What is parsing & error reporting
 
 A simple parser could be seen as a function with the signature
 
@@ -26,7 +26,7 @@ In that context, an error is represented with a value of `Nothing`, and a succes
 parseLoc : string -> Either Loc output
 ```
 
-Where `Loc` holds the file, line, and column of the state of the parser. 
+where `Loc` holds the file, line, and column of the state of the parser. 
 This is a very successful implementation of a parser with locations and many languages deployed today use a similar architecture where the parser, and its error-reporting mechanism, keep track of the context in which they are parsing files and use it to produce helpful diagnostics.
 
 I believe that there is a better way, one that does not require a tight integration between the error-generating process (here parsing) and the error-reporting process (here, location tracking). For this, I will be using container morphisms, or dependent lenses, to represent parsing and error reporting.
@@ -50,44 +50,23 @@ The biggest difference with lenses is the second argument of `set`: `b' (get x)`
 
 This change in types allows a change in perspective. Instead of treating lenses as ways to convert between data types, we use lenses to convert between query/response APIs. 
 
-{% tikz %}
-
-\begin{tikzpicture}
-
-\draw (5.0,0) rectangle (8.0,2);
-\draw[->] (8, 1.5) -- (8.5,1.5) node [right] {B (query)};
-\draw[<-] (8, 0.5) -- (8.5,0.5) node [right] {B' (response)};
-\draw[->] (4.5, 1.5) node [left] {A (query)}  -- (5.0,1.5) ;
-\draw[<-] (4.5, 0.5) node [left] {A' (response)}  -- (5.0,0.5) ;
-\end{tikzpicture}
-{% endtikz %}
-
+![Lens](/assetsPosts/2024-04-08-modular-error-reporting/lens2.png)
 
 On each side `A` and `B` are queries and `A'` and `B'` are _corresponding responses_. The two functions defining the lens have type `get : A -> B`, and `set : (x : A) -> A' (get x) -> B' x`, that is, a way to convert queries together, and a way to _rebuild_ responses given a query. A lens is therefore a mechanism to map between one API to another.
 
-If the goal is to find what line an error occurs, then what the `get` function can do is split our string into multiple lines, each of which will be parsed separately.
+If the goal is to find on what line an error occurs, then what the `get` function can do is split our string into multiple lines, each of which will be parsed separately.
 
 ```idris
 splitLines : String -> List String
 ```
 
-Once we have a list of strings, we can call a parser on each line, this will be a function like above `parseLine : String -> Maybe output`. By composing those two functions we have the signature `String -> List (Maybe output)`. This gives us a hint as to what the response for `splitLine` should be, it should be a list of potential output. If we draw our lens again we have the following types:
+Once we have a list of strings, we can call a parser on each line, this will be a function like above `parseLine : String -> Maybe output`. By composing those two functions we have the signature `String -> List (Maybe output)`. This gives us a hint as to what the response for `splitLine` should be, it should be a list of potential outputs. If we draw our lens again we have the following types:
 
-{% tikz %}
-\begin{tikzpicture}
-
-\draw (5.0,0) rectangle (8.0,2);
-\draw[->] (8, 1.5) -- (8.5,1.5) node [right] {List (String)};
-\draw[<-] (8, 0.5) -- (8.5,0.5) node [right] {List (Maybe output)};
-\draw[->] (4.5, 1.5) node [left] {String}  -- (5.0,1.5) ;
-\draw[<-] (4.5, 0.5) node [left] {String}  -- (5.0,0.5) ;
-\end{tikzpicture}
-{% endtikz %}
-
+![Lens](/assetsPosts/2024-04-08-modular-error-reporting/lens.png)
 
 We are using `(String, String)` on the left to represent "files as inputs" and "messages as outputs" both of which are plain strings.
 
-There is a slight problem with this, given a `List (Maybe output)` we actually have no way to know which of the values refer to which line. For example, if the output are numbers and we the input is the file
+There is a slight problem with this, given a `List (Maybe output)` we actually have no way to know which of the values refer to which line. For example, if the outputs are numbers and we know the input is the file
 
 ```
 23
@@ -96,7 +75,7 @@ There is a slight problem with this, given a `List (Maybe output)` we actually h
 3
 ```
 
-And we are given the output `[Nothing, Nothing, Just 3]` we have no clue how to interpret the `Nothing` and how it's related to the result of splitting the lines, they're not even the same size. We can "guess" some behaviors but that's really flimsy reasoning, ideally, the API translation system should keep track of that so that we don't have to guess what's the correct behavior. And really, it should be telling us what the relationship is, we shouldn't even be thinking about this.
+and we are given the output `[Nothing, Nothing, Just 3]` we have no clue how to interpret the `Nothing` and how it's related to the result of splitting the lines, they're not even the same size. We can "guess" some behaviors but that's really flimsy reasoning, ideally the API translation system should keep track of that so that we don't have to guess what's the correct behavior. And really, it should be telling us what the relationship is, we shouldn't even be thinking about this.
 
 So instead of using plain lists, we are going to keep the information _in the type_ by using dependent types. The following type keeps track of an "origin" list and its constructors store values that fulfill a predicate in the origin list along with their position in the list:
 
@@ -120,7 +99,7 @@ containsEven : String -> Maybe Int
 containsEven str = parseInteger str >>= (\i : Int => toMaybe (even i) i)
 ```
 
-This will return a number if its even, otherwise it will fail. From this we want to write a parser that will parse an entire file, and return errors where the file does not parse. We do this by writing a lens that will split a file into lines and then rebuild responses into a string such that the string contains the line number. 
+This will return a number if it's even, otherwise it will fail. From this we want to write a parser that will parse an entire file, and return errors where the file does not parse. We do this by writing a lens that will split a file into lines and then rebuild responses into a string such that the string contains the line number. 
 
 ```idris
 splitFile : (String :- String) =%> SomeC (String :- output)
@@ -134,7 +113,7 @@ splitFile = MkMorphism lines printErrors
 
 ```
 
-Some notation: `=%>` is the binary operator for dependent lenses `:-` is the binary operator for non-dependent boundaries. Later `!>` will be used for dependent boundaries.
+Some notation: `=%>` is the binary operator for dependent lenses, and `:-` is the binary operator for non-dependent boundaries. Later `!>` will be used for dependent boundaries.
 
 `printErrors` builds an error message by collecting the line number that failed. We use the missing values from `Some` as failed parses. Equipped with this program, we should be able to generate an error message that looks like this:
 
@@ -299,6 +278,6 @@ All that without touching our original parser, or our line tracking system.
 
 ## Conclusion
 
-We've only touched the surface of what dependent lenses can do for software engineering by providing a toy example. Yet, this example is simple enough to be introduced, and resolved in one post, but also shows a solution to a complex problem that is affecting parsers and compilers across the spectrum of programming languages. In truth, dependent lenses can do much more than what is presented here, they can deal with effects, non-deterministic systems, machine learning, and more. One of the biggest barriers to mainstream adoption is the availability of dependent types in programming languages. The above was written in [idris](https://www.idris-lang.org/) a language with dependent types, but if your language of choice adopts dependent types one day, then you should be able to write the same program as we did just now, but for large-scale production software.
+We've only touched the surface of what dependent lenses can do for software engineering by providing a toy example. Yet, this example is simple enough to be introduced, and resolved in one post, but also shows a solution to a complex problem that is affecting parsers and compilers across the spectrum of programming languages. In truth, dependent lenses can do much more than what is presented here, they can deal with effects, non-deterministic systems, machine learning, and more. One of the biggest barriers to mainstream adoption is the availability of dependent types in programming languages. The above was written in [idris](https://www.idris-lang.org/), a language with dependent types, but if your language of choice adopts dependent types one day, then you should be able to write the same program as we did just now, but for large-scale production software.
 
 The program is available on [gitlab](https://gitlab.com/avidela/types-laboratory/-/blob/main/src/Interactive/Parsing.idr?ref_type=heads).
