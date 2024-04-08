@@ -18,6 +18,10 @@ directors:
 
 collaborators:
   -
+    name : "Nicolas Eschenbaum"
+    image : "/assets/images/people/nicolas-eschenbaum.jpg"
+    link : "https://neschenbaum.github.io/"
+  -
     name : "Bruno Gavranović"
     image : "/assets/images/people/bruno-gavranovic.jpg"
     link : "https://www.brunogavranovic.com/"
