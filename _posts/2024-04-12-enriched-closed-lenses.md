@@ -44,7 +44,7 @@ There's a slightly more general definition called "weighted optics" that appears
 
 # Enriched closed lenses
 
-Putting together everything I've just said, the next step is clear. If we have categories $\mathcal C, \mathcal D$ and a monoidal category $\mathcal M$, with $\mathcal M$ acting on $\mathcal C$ and $\mathcal D$ enriched in $\mathcal C$, then we can still define $$\mathbf{Optic}_\mathcal M (\mathcal C, \mathcal D)$$ in exactly the same way, replacing $$\mathbf{Para}_\mathcal M (\mathcal D)$$ with its enriched version. But now, unlike before, we can use the ninja Yoneda lemma to eliminate the coend and get
+Putting together everything I've just said, the next step is clear. If we have categories $\mathcal C, \mathcal D$ and a monoidal category $\mathcal M$, with $\mathcal M$ acting on $\mathcal C$ and $\mathcal D$ enriched in $\mathcal M$, then we can still define $$\mathbf{Optic}_\mathcal M (\mathcal C, \mathcal D)$$ in exactly the same way, replacing $$\mathbf{Para}_\mathcal M (\mathcal D)$$ with its enriched version. But now, unlike before, we can use the ninja Yoneda lemma to eliminate the coend and get
 
 $$\mathbf{Optic}_\mathcal M (\mathcal C, \mathcal D) \left( \binom{X}{X'}, \binom{Y}{Y'} \right) \cong \mathcal C (X, [Y', X'] \bullet Y)$$
 
@@ -52,7 +52,7 @@ In general I refer to optics that can be defined without type quantification as 
 
 # Into the compiler forest
 
-Section 5 of [The Compiler Forest](https://homepages.inf.ed.ac.uk/gdp/publications/compiler-forest.pdf) by Budiu, Galenson and Plotkin has a *very* interesting definition in it. They have a cartesian closed category $\mathcal C$ (whose internal hom I'll write as $\to$) and a strong monad $T$ on it, and they define a category whose objects are pairs of objects of $\mathcal C$ whose morphisms $f : \binom{X}{X'} \to \binom{Y}{Y'}$ are morphisms $f : X \to T (Y \times (Y' \to T X'))$ of $\mathcal C$.
+Section 5 of [The Compiler Forest](https://homepages.inf.ed.ac.uk/gdp/publications/compiler-forest.pdf) by Budiu, Galenson and Plotkin has a *very* interesting definition in it. They have a cartesian closed category $\mathcal C$ (whose internal hom I'll write as $\to$) and a strong monad $T$ on it, and they define a category whose objects are pairs of objects of $\mathcal C$ and whose morphisms $f : \binom{X}{X'} \to \binom{Y}{Y'}$ are morphisms $f : X \to T (Y \times (Y' \to T X'))$ of $\mathcal C$.
 
 They also nail an intuition for lenses that I use constantly and I haven't seen written down anywhere else: problems go forwards, solutions go backwards.
 
