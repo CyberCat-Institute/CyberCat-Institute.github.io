@@ -2,7 +2,7 @@
 layout: post
 title: Enriched Closed Lenses
 author: Jules Hedges
-date: 2024-04-02
+date: 2024-04-12
 categories: [category theory, categorical cybernetics]
 usemathjax: true 
 excerpt: "I'm going to record something that I think is known to everyone doing research on categorical cybernetics, but I don't think has been written down somewhere: an even more general version of mixed optics that replaces the backwards actegory with an enrichment. With it, I'll make sense of a curious definition appearing in The Compiler Forest."
@@ -30,17 +30,17 @@ Given an actegory, we can define a bicategory $$\mathbf{Para}_\mathcal M (\mathc
 
 Given an enriched category, we can define a bicategory $$\mathbf{Para}_\mathcal M (\mathcal C)$$, whose objects are objects of $\mathcal C$ and morphisms are pairs of $M : \mathcal M$ and $f : \mathcal M (M, [X, Y])$. If this is a tensored enrichment then the two definitions of $$\mathbf{Para}_\mathcal M (\mathcal C)$$ are equivalent.
 
-In all of these cases we are locally fibred over $\mathcal M$, and I will write $$\mathbf{Para}_\mathcal M (\mathcal C) (X, Y) (M)$$, $$\mathbf{Copara}_\mathcal M (\mathcal C) (X, Y) (M)$ for the set of co/parametrised morphisms with a fixed parameter type.
+In all of these cases we are locally fibred over $\mathcal M$, and I will write $$\mathbf{Para}_\mathcal M (\mathcal C) (X, Y) (M)$$, $$\mathbf{Copara}_\mathcal M (\mathcal C) (X, Y) (M)$$ for the set of co/parametrised morphisms with a fixed parameter type.
 
 It's not possible to define $\mathbf{Copara}_\mathcal M (\mathcal C)$ for an enrichment. There's a very slick common generalisation of actegories and enrichments called a [locally graded category](https://ncatlab.org/nlab/show/locally+graded+category), which is a category enriched in presheaves with Day convolution. There's also a very slick definition of $\mathbf{Para}$ for a locally graded category. I'd like to know, for exactly which locally graded categories is possible to define $\mathbf{Copara}$?
 
 # Mixed optics
 
-If we have two actegories $\mathcal C, \mathcal D$ that share the same acting category $\mathcal M$ then we can define **mixed optics**, which first apperaed in [Profunctor Optics: A Categorical Update](https://compositionality-journal.org/papers/compositionality-6-1/). This is a 1-category $$\mathbf{Optic}_\mathcal M (\mathcal C, \mathcal D)$$ whose objects are pairs $\binom{X}{X'}$ of an object of $\mathcal C$ and an object of $\mathcal D$, and a morphism $\binom{X}{X'} \to \binom{Y}{Y'}$ is an element of the coend 
+If we have two actegories $\mathcal C, \mathcal D$ that share the same acting category $\mathcal M$ then we can define **mixed optics**, which first appeared in [Profunctor Optics: A Categorical Update](https://compositionality-journal.org/papers/compositionality-6-1/). This is a 1-category $$\mathbf{Optic}_\mathcal M (\mathcal C, \mathcal D)$$ whose objects are pairs $\binom{X}{X'}$ of an object of $\mathcal C$ and an object of $\mathcal D$, and a morphism $\binom{X}{X'} \to \binom{Y}{Y'}$ is an element of the coend 
 
 $$\int^{M : \mathcal M} \mathbf{Copara}_\mathcal M (\mathcal C) (X, Y) (M) \times \mathbf{Para}_\mathcal M (\mathcal D) (Y', X') (M)$$
 
-There's a slightly more general definition called "weighted optics" that appears in [Bruno's thesis](https://arxiv.org/abs/2403.13001), which replaces $\mathcal M$ and was used very productively there, which replaces $\mathcal M$ with two monoidal categories related by a Tambara module. I think that it's an orthogonal generalisation to the one I'm about to do here.
+There's a slightly more general definition called "weighted optics" that appears in [Bruno's thesis](https://arxiv.org/abs/2403.13001) and was used very productively there, which replaces $\mathcal M$ with two monoidal categories related by a Tambara module. I think that it's an orthogonal generalisation to the one I'm about to do here.
 
 # Enriched closed lenses
 
