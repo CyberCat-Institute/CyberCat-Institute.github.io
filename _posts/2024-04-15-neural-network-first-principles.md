@@ -149,7 +149,7 @@ It works a lot like the standard co-reader comonad, but it now accumulates param
 
 Functional programers tend to be familiar with lenses. They are often presented as coalgebras of the costate comonad, and their links to automatic differentiation [are now well known](https://www.philipzucker.com/reverse-mode-differentiation-is-kind-of-like-a-lens-ii/). 
 
-Monomorphic lenses corresponds to the plain costate comonad, and polymorphic lenses correspond to the indexed version. 
+Monomorphic lenses correspond to the plain costate comonad, and polymorphic lenses correspond to the indexed version. 
 
 ```idris
 -- Monomorphic Lens
