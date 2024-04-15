@@ -2,7 +2,7 @@
 layout: post
 title: "Building a Neural Network from First Principles using Free Categories and Para(Optic)"
 author: Zanzi Mihejevs
-date: 2024-04-12
+date: 2024-04-15
 categories: [machine learning, categorical cybernetics, functional programming]
 excerpt: "In this post we will look at how dependent types can allow us to effortlessly implement the category theory of machine learning directly, opening up a path to new generalisations."
 usemathjax: true
@@ -22,8 +22,8 @@ All in all, our goal is to formulate this: A simple neural network with static t
 import Data.Fin 
 import Data.Vect 
 
--- model : GPath ParaLensTensor [< [4, 2], [4], [0], [2, 4], [2], [0]] [2] [2]
--- model = [< linear, bias, relu, linear, bias, relu] 
+model : GPath ParaLensTensor [< [4, 2], [4], [0], [2, 4], [2], [0]] [2] [2]
+model = [< linear, bias, relu, linear, bias, relu] 
 ```
 
 The cruicial part is the $\mathbf{Para}$ construction, which lets us accumulate parameters along the composition of edges. This lets us state the parameters of each edge separately, and then compose them into a larger whole as we go along. 
@@ -225,7 +225,6 @@ We can now start writing neural networks. I'll be mostly adapting [Tatsuya's cod
 Unlike the original code, we will be using a heterogeneous list - rather than nested tuples - to keep track of all of our parameters, which is why the resulting dimensions will be much easier to track. 
 
 ```idris 
--- TODO: make all this not wrong
 linear : {n, m : Nat} -> ParaLensTensor [m, n] [n] [m] 
 linear = (getter, setter) where
    getter : (Tensor [m, n], Tensor [n]) -> Tensor [m]
