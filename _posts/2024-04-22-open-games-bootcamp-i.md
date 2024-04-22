@@ -2,10 +2,13 @@
 layout: post
 title: "The Build Your Own Open Games Engine Bootcamp — Part I: Lenses"
 author: Daniele Palombi
+date: 2024-04-22
 categories: [game theory, category theory, haskell, open games]
 excerpt: The first installment of a multi-part series demistifying the underlying mechanics of the open games engine in a simple manner.
 usemathjax: true
 ---
+
+Cross-posted from the [20[ ] blog](https://blog.20squares.xyz/open-games-bootcamp-i/)
 
 Welcome to part I of the Build Your Own Open Games Engine Bootcamp, where we'll be learning the inner workings of the Open Games Engine and Compositional Game Theory in general, while implementing a super-simple Haskell version of the engine along the way.
 
