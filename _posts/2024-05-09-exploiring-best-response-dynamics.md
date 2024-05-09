@@ -148,7 +148,7 @@ With this temperature, the learning rate can be increased all the way to 1, and 
 
 In fact, this is so robust that it makes me wonder whether there could be a good proof of the constructive Brouwer theorem using statistical physics methods.
 
-If the temperature is decreaesd further to 0.001, we lose convergence:
+If the temperature is decreased further to 0.001, we lose convergence:
 
 ![Graph](/assetsPosts/2024-05-09-exploring-best-response-dynamics/img3.png)
 
