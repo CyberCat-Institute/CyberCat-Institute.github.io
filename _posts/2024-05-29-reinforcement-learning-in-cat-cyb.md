@@ -2,6 +2,7 @@
 layout: post
 title: Reinforcement Learning through the Lens of Categorical Cybernetics
 author: Riu Rodriguez Sakamoto
+date: 2024-05-29
 categories: [reinforcement learning, categorical cybernetics]
 excerpt: "This is an overview of the 'RL lens', a construction that we recently introduced to understand some reinforcement learning algorithms like Q-learning"
 image: assetsPosts/2024-05-28-reinforcement-learning-in-cat-cyb/thumbnail.png
@@ -17,7 +18,7 @@ Here we make a structural approach to the above dilemma, both in the sense of st
 The characteristics of RL algorithms that we capture are their modularity and specification via typed interfaces.
 
 To keep this exposition grounded in something practical, we will follow an example, [Q-learning](https://en.wikipedia.org/wiki/Q-learning), which from this point of view captures the essence of reinforcement learning.
-It is an algorithm that finds an optimal policy in a MDP by keeping an estimate of value of taking a certain action in a certain state, encoded as a table $Q:A\times S\to R$, and updating it from previous estimates (*bootstrapping*) and from samples obtained by interacting with an environment.
+It is an algorithm that finds an optimal policy in an MDP by keeping an estimate of the value of taking a certain action in a certain state, encoded as a table $Q:A\times S\to R$, and updating it from previous estimates (*bootstrapping*) and from samples obtained by interacting with an environment.
 This is the content of the following equation (we'll give the precise type for it later):
 
 $$ \begin{equation}
@@ -34,12 +35,12 @@ Ablating either component produces other existing algorithms, which is reassurin
 
 # The RL lens
 
-Q-learning as we've just described, and other major RL algorithms, can be captured as lenses; the forward map is the policy deployment from the models parameters, and the backward map is the update function.
+Q-learning as we've just described, and other major RL algorithms, can be captured as lenses; the forward map is the policy deployment from the model's parameters, and the backward map is the update function.
 
 ![Generic model lens](/assetsPosts/2024-05-28-reinforcement-learning-in-cat-cyb/generic_model.png)
 
 The interface types vary from algorithm to algorithm.
-In the case of Q-learning, the forward map $P$ is of type $R^{S\times A}\to (DA)^S$. It takes the current $Q$-table $Q:S\times A\to R$ and outputs a policy $S\to DA$. This is our $\varepsilon$-greedy policy defined earlier.
+In the case of Q-learning, the forward map $P$ is of type $R^{S\times A}\to (DA)^S$ (where $D$ is the distribution monad). It takes the current $Q$-table $Q:S\times A\to R$ and outputs a policy $S\to DA$. This is our $\varepsilon$-greedy policy defined earlier.
 The backward map $G$ has the following type (we define $\tilde{Q}$ in (2)):
 
 $$ \begin{align*}
@@ -74,7 +75,9 @@ In our running example, we can do the standard transformation of the Bellman upd
     \end{align*} $$
 
     The loss $\mathcal{L}$ is defined as the MSE between the current $Q$-value and the update target $g$:
+
     $$ \mathcal{L} = \left(Q(s,a) - g\right)^2 = \left(Q(s,a) - (r + \gamma \max_{a'} \bar{Q}(s',a')) \right)^2 $$
+    
     We treat $\bar{Q}(s',a')$ ($Q$ bar) as a constant value, so that the (semi-)gradient of $\mathcal{L}$ wrt. the $Q$-matrix *is* the Bellman Q-update, as we show next.
 
 - Feedback unit (Bellman update):
