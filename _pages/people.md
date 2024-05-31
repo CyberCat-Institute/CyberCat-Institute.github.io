@@ -34,6 +34,10 @@ collaborators:
     image : "/assets/images/people/jade-master.jpg"
     link : "https://sites.google.com/view/jadeedenstarmaster/home/"
   -
+    name : "Zanzi Mihejevs"
+    image : "/assets/images/people/zanzi-mihejevs.jpg"
+    link : "https://zanzix.github.io/"
+  -
     name : "Daniele Palombi"
     image : "/assets/images/people/daniele-palombi.jpg"
     link : "https://dpl0a.github.io"
