@@ -58,7 +58,7 @@ This turns out to be exactly the the definition of an *optic* in $\mathcal C$ - 
 
 ![String diagram](/assetsPosts/2024-06-28-yoga-contexts/img8.png)
 
-We also get a symmetric monoidal product on $\mathbf{Optic} (\mathcal C)$ that encompasses what I said earlier about sliding holes around. Now we get an alternative definition of context: it's a *generalised state* of optics. That is to say, it's an *ultimate outside*, which can be transformed by attach a comb to the inside of the hole:
+We also get a symmetric monoidal product on $\mathbf{Optic} (\mathcal C)$ that encompasses what I said earlier about sliding holes around. Now we get an alternative definition of context: it's a *generalised state* of optics. That is to say, it's an *ultimate outside*, which can be transformed by attaching a comb to the inside of the hole:
 
 ![String diagram](/assetsPosts/2024-06-28-yoga-contexts/img9.png)
 
