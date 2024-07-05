@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Compositionality and the mass customization of economic models
+title: "Compositionality and the mass customization of economic models"
 author: Philipp Zahn
 categories: [compositionality,model,economics]
 excerpt: "Are economic models useful for making decisions? One might expect that
@@ -11,8 +11,8 @@ so, I want to explore how the usefulness ties into the modelling
 process. The reason for doing so is simple: Part of our efforts at
 CyberCat is to build software tools to improve and accelerate the
 modelling process."
-thanks: I thank Oliver Beige for many helpful comments.
---
+thanks: "I thank Oliver Beige for many helpful comments."
+---
 
 # Fables or algorithms?
 
