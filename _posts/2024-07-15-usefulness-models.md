@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Compositionality and the mass customization of economic models"
+title: "Compositionality and the Mass Customization of Economic Models"
 author: Philipp Zahn
 categories: [compositionality,model,economics]
 excerpt: "Are economic models useful for making decisions? One might expect that
@@ -11,8 +11,9 @@ so, I want to explore how the usefulness ties into the modelling
 process. The reason for doing so is simple: Part of our efforts at
 CyberCat is to build software tools to improve and accelerate the
 modelling process."
-thanks: "I thank Oliver Beige for many helpful comments."
 ---
+
+I thank Oliver Beige for many helpful comments.
 
 # Fables or algorithms?
 
@@ -22,7 +23,7 @@ thanks: "I thank Oliver Beige for many helpful comments."
 > _(Ariel Rubinstein)_[^1]
 
 Are economic models useful for making decisions? One might expect that
-there is clear answer to this simple question. But in fact opinions on
+there is a clear answer to this simple question. But in fact opinions on
 the usefulness or non-usefulness of models as well as what exactly makes
 models useful vary widely - within the economic profession and of course
 even more so beyond. Sometimes the question feels like a Rorschach
@@ -121,7 +122,7 @@ Many classic games (in the game theory sense) like the Battle of the
 Sexes, Matching Pennies, and of course the Prisoners\' Dilemma help to
 focus on key issues - for instance the interdependency between actions
 and their consequences. To be clear, the connection how to map a model
-into a concrete decision is very lose in this case and the value of the
+into a concrete decision is very loose in this case and the value of the
 model lies in the eyes of the analyst.
 
 These games often focus on a few actions (\"defect\" or \"cooperate\").
@@ -129,7 +130,7 @@ Moreover, agents have perfect information about the consequences of
 their actions and the actions of others. In many situations, e.g. in
 business contexts, choices are more fine-grained and information is not
 perfect. Models in Industrial Organization routinely incorporate these
-aspects. For instance, analyzing competition between companies. From a
+aspects, for instance analyzing competition between companies. From a
 practical perspective, these models often resemble the following
 pattern: If we had information X, the model would help us make a
 decision. Consider strategic pricing: It is standard in these models to
@@ -176,7 +177,7 @@ I first need to discuss how models get located on a specific point on
 the usefulness line in the first place. But this requires digging into
 the actual modelling process. Note again that I am only interested in
 \"instrumental\" modelling - models that are useful for a specific
-decision at hand. My exposition will be simplistic and subjective. I do
+decision at hand. My exposition will be simplistic and subjective. I will
 neither cover the full range of opinions nor be grounded in any
 philosophical discussions of economics. This is just me describing how I
 see this (and also how I have used models in my work at
@@ -233,7 +234,7 @@ Economists studying financial crises in 2006 were not really standing in
 the spotlight of attention. That changed radically one year later.[^6]
 
 Let me emphasize another aspect. I depicted applied models as packages
-of internal, formal structure and interpretative map connecting the
+of internal, formal structure and interpretative maps connecting the
 internals with some outside phenomenon. This interpretative mapping is
 subjective. And indeed discussions in economic policy often do not focus
 on the internal consistency of models but instead are more about the
@@ -250,7 +251,7 @@ economic models but of course also sources outside. Different models and
 other sources of information need to be integrated.
 
 As a consequence, whatever powers we gain through the formal model,
-loads of it are lost the moment we move beyond the model\'s inner
+a lot of it is lost the moment we move beyond the model\'s inner
 working and need to compare and select between different models as well
 as integrate with other sources. A synthesis at the formal level is not
 feasible.
@@ -369,7 +370,7 @@ later. This can mean more complexity but most importantly means that we
 can build consistent models that are extended, refined, and updated over
 time.
 
-These aspects resembles similar attempts in mathematics and the use of
+These aspects resemble similar attempts in mathematics and the use of
 proof assistants and verification systems more generally. Here is
 Terence Tao on these efforts[^10]:
 
@@ -456,8 +457,7 @@ which these tradeoffs can be articulated.
 [^3]: The view on what economists do there is markedly different from
     Rubinstein\'s. Prominently Al Roth: [The Economist as Engineer: Game
     Theory, Experimentation, and Computation as Tools for Design
-    Economics](https://onlinelibrary.wiley.com/doi/abs/10.1111/1468-0262.00335)
-    \"The economist as an engineer\".
+    Economics](https://onlinelibrary.wiley.com/doi/abs/10.1111/1468-0262.00335).
 
 [^4]: And probably most importantly, functions themselves can be input
     to other functions.
@@ -473,7 +473,7 @@ which these tradeoffs can be articulated.
 [^7]: Ibid.
 
 [^8]: In addition, if the modelling falls to academics, then also their
-    incentive kick in. The chances for publishing a model on a subject
+    incentives kick in. The chances for publishing a model on a subject
     that has already been tackled by a prominent model can be very low -
     in particular in the case of a null-result.
 
