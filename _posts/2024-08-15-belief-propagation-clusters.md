@@ -2,10 +2,12 @@
 layout: post
 title: "Beliefs, Belief Propagation and Belief Clusters"
 author: Oliver Beige
-date: 2024-08-12
+date: 2024-08-15
 categories: [economics]
 excerpt: "In which we try to capture all the ways how beliefs can shape social and economic interaction."
 ---
+
+Cross-posted from [Oliver's EconPatterns blog](https://econpatterns.substack.com/p/beliefs-belief-propagation-and-belief)
 
 There's a non-zero chance that sometime in the not-so-far future we will think of the "Bayesian Revolution" in the same way we think of the "Marginal Revolution". 
 
