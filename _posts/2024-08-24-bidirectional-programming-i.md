@@ -33,7 +33,7 @@ data Term : List Ty -> Ty -> Type where
   -- Pattern matching on Unit, redunant here but kept for comparison to later
   UnitElim : Term xs Unit -> Term xs x -> Term xs x
   -- A pair is a term if each side is a term
-  TensorIntro : Term xs tx -> Term xs y -> Term xs (Tensor x y)
+  TensorIntro : Term xs x -> Term xs y -> Term xs (Tensor x y)
   -- Pattern matching on a pair, adding both sides to the scope
   TensorElim : Term xs (Tensor x y) -> Term (x :: y :: xs) z -> Term xs z
 ```
