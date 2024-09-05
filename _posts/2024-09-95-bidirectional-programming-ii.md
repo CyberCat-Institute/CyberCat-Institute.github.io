@@ -1,16 +1,18 @@
 ---
 layout: post
-title: "Foundations of Bidirectional Programming II: The Logic of Lenses"
+title: "Foundations of Bidirectional Programming II: Negative Types"
 author: Jules Hedges
-date: 2024-08-27
+date: 2024-09-05
 categories: [programming languages]
-usemathjax: true
-excerpt: 
+usemathjax : true
+excerpt: In this post we'll begin designing a kernel language in which all programs are optics. What I mean by a "kernel language" is that it will serve as a compiler intermediate representation, with a surface language compiling down to it. I intend the surface language to be imperative style like the current Open Game Engine (with an approximately Python-like syntax), but the kernel language will reflect the category theory as closely as possible. I plan the kernel language to be well typed by construction, something that seems like overkill until I think about the problem of figuring out how pattern matching should work in a bidirectional language.
 ---
 
-In this post we'll begin designing a core language in which all programs are optics. What I mean by a "core language" is that it will serve as a compiler intermediate representation, with a surface language compiling down to it. I intend the surface language to be imperative style like the current Open Game Engine (with an approximately Python-like syntax), but the core language will reflect the category theory as closely as possible. I plan the core language to be well typed by construction, something that seems like overkill until I think about the problem of figuring out how pattern matching should work in a bidirectional language.
+See [part I](https://cybercat.institute/2024/08/26/bidirectional-programming-i/) of this series
 
-My first design choice is that *object language types denote pairs of metalanguage types*, with one denoting the forward part (I will usually call it the *covariant denotation*) and the other denoting the backward part (the *contravariant denotation*).
+In this post we'll begin designing a kernel language in which all programs are optics. What I mean by a "kernel language" is that it will serve as a compiler intermediate representation, with a surface language compiling down to it. I intend the surface language to be imperative style like the current Open Game Engine (with an approximately Python-like syntax), but the kernel language will reflect the category theory as closely as possible. I plan the kernel language to be well typed by construction, something that seems like overkill until I think about the problem of figuring out how pattern matching should work in a bidirectional language.
+
+My first design choice is that *object language types denote pairs of metalanguage types*, with one denoting the forward part (sometimes I might call it the *covariant denotation*) and the other denoting the backward part (the *contravariant denotation*).
 
 ```haskell
 Cov : Ty -> Type
@@ -100,13 +102,13 @@ which is impossible as soon as we introduce any types that are not pointed.
 
 ## A logic puzzle
 
-This suggests a *logic puzzle*: can we design a proof system for negation that validates double negation introduction, double negation elimination, principle of explosion but does not validate excluded middle?
+This suggests a *logic puzzle*: can we design a proof system for negation that validates double negation introduction, double negation elimination and the principle of explosion, but does not validate excluded middle?
 
-After some tinkering I did indeed invent a system with these properties. Sadly it turned out to be a red herring, since it ended up proving these principles that are valid for lenses in terms of more primitive principles that are not valid for lenses.
+After some tinkering I did indeed invent a system with these properties. Sadly it turned out to be a red herring, since it ended up proving these principles that are valid for lenses in terms of more primitive principles that are not valid for lenses. But I still think it's an interesting enough sideline to report here.
 
 The system I designed was a 2-sided hybrid of a natural deduction calculus and a sequent calculus, with general right-elimination, and both left-elimination and right-introduction restricted to empty sequents on the right. In standard proof theory syntax I would write it like this:
 
-$$ \frac{}{\Gamma \vdash \Gamma} (Ax) \qquad \frac{\Gamma, \varphi \vdash}{\Gamma \vdash \neg \varphi} (RI) \qquad \frac{\Gamma, \neg \varphi \vdash}{\Gamma \vdash \varphi} (LE) \qquad \frac{\Gamma \vdash \varphi, \Delta \qquad \Gamma' \vdash \neg \varphi, \Delta'}{\Gamma, \Gamma' \vdash \Delta, \Delta'} (RE) $$
+$$ \frac{\Gamma, \varphi \vdash}{\Gamma \vdash \neg \varphi} (RI) \qquad \frac{\Gamma, \neg \varphi \vdash}{\Gamma \vdash \varphi} (LE) \qquad \frac{\Gamma \vdash \varphi, \Delta \qquad \Gamma' \vdash \neg \varphi, \Delta'}{\Gamma, \Gamma' \vdash \Delta, \Delta'} (RE) $$
 
 In Idris:
 ```haskell
@@ -116,7 +118,7 @@ data Term : List Ty -> List Ty -> Type where
   RAct : Term xs ys -> Symmetric ys ys' -> Term xs ys'
   NotIntroR : Term (x :: xs) [] -> Term xs [Not x]
   NotElimL : Term (Not x :: xs) [] -> Term xs [x]
-  NotElimR : (Simplex xs1 xs2 xs3) -> (Simplex ys1 ys2 ys3)
+  NotElimR : Simplex xs1 xs2 xs3 -> Simplex ys1 ys2 ys3
           -> Term xs1 (y :: ys1) -> Term xs2 (Not y :: ys2) -> Term xs3 ys3
 ```
 
@@ -125,7 +127,8 @@ data Term : List Ty -> List Ty -> Type where
 Here are what our principles look like, together with some non-proofs that are ruled out by the restrictions on right-introduction and left-elimination:
 ```haskell
 dni : {a : Ty} -> Term [a] [Not (Not a)]
-dni = NotIntroR (LAct (Insert (There Here) (Insert Here Empty)) (NotElimR (Left Right) Right Var Var))
+dni = NotIntroR (LAct (Insert (There Here) (Insert Here Empty)) 
+                      (NotElimR (Left Right) Right Var Var))
 
 dne : {a : Ty} -> Term [Not (Not a)] [a]
 dne = NotElimL (NotElimR (Left Right) Right Var Var)
@@ -144,10 +147,12 @@ lem : {a : Ty} -> Term [] [Not a, a]
 
 Unfortunately, although my restricted left-elimination and right-introduction rules can be used to prove the semantically valid principles of double negation introduction and elimination, they are themselves not semantically valid. The problems start to appear once we add back in the rules for tensor, which in this 2-sided calculus are
 ```haskell
-  TensorIntro : (Simplex xs1 xs2 xs3) -> (Simplex ys1 ys2 ys3)
-             -> Term xs1 (y1 :: ys1) -> Term xs2 (y2 :: ys2) -> Term xs3 (Tensor y1 y2 :: ys3)
-  TensorElim : (Simplex xs1 xs2 xs3) -> (Simplex ys1 ys2 ys3)
-            -> Term xs1 (Tensor x y :: ys1) -> Term (x :: y :: xs2) ys2 -> Term xs3 ys3
+  TensorIntro : Simplex xs1 xs2 xs3 -> Simplex ys1 ys2 ys3
+             -> Term xs1 (y1 :: ys1) -> Term xs2 (y2 :: ys2) 
+             -> Term xs3 (Tensor y1 y2 :: ys3)
+  TensorElim : Simplex xs1 xs2 xs3 -> Simplex ys1 ys2 ys3
+            -> Term xs1 (Tensor x y :: ys1) -> Term (x :: y :: xs2) ys2 
+            -> Term xs3 ys3
 ```
 
 Now we can write a bad term:
@@ -155,11 +160,11 @@ Now we can write a bad term:
 bad : {a : Ty} -> Term [] [Not (Tensor a (Not a))]
 bad = NotIntroR (TensorElim (Left Right) Right Var explosion)
 ```
-Although these rules don't seem to be strong enough to prove the distributive law between tensor and negation, semantically this is the same shape as excluded middle. I think it would be possible to restrict left-elimination and right-introduction differently to rule out this kind of thing, but only at the expensive of leaving us with unprovable instances of double negation introduction and elimination.
+Although these rules don't seem to be strong enough to prove the distributive law between tensor and negation, semantically this is the same shape as excluded middle. I think it would be possible to restrict left-elimination and right-introduction differently to rule out this kind of thing, but only at the expense of leaving us with unprovable instances of double negation introduction and elimination.
 
 ## Structurally involutive negation
 
-Although I would love to come up with a calculus that fulfills my requirements using pure logic, I currently believe that it's impossible. So instead I will bring out the big guns, and use a `Structure`. The methodology I introduced in the previous post yields a clean conceptual separation into *syntax* and *logic*. If we want to say that two things are syntactically identical, for example permutations of contexts, we use a `Structure` to encode that. So what we are about to do is to encode a principle that $p$ and $\neg \neg p$ are not *logically equivalent* but *syntactically identical*.
+Although I would love to come up with a calculus that fulfills my requirements using pure logic, I currently believe that it's impossible. So instead I will bring out the big guns, and use a `Structure`. The methodology I introduced in the previous post yields a clean conceptual separation into *syntax* and *logic*. If we want to say that two things are syntactically identical, for example permutations of contexts, we use a `Structure` to encode that. So what we are about to do is to encode a principle that $p$ and $\neg \neg p$ are not merely *logically equivalent* but *syntactically identical*.
 
 This is how we do it:
 ```haskell
@@ -173,17 +178,19 @@ data Involutive : Structure Ty where
   Insert : Parity x y -> Insertion y ys zs -> Involutive xs ys -> Involutive (x :: xs) zs
 ```
 
+An element of `Involutive xs ys` is a witness that `ys` is a permutation of `xs` but with an arbitrary number of double negatives inserted or removed.
+
 With double negation introduction and elimination taken care of, all we have to do is to make a logic that validates the principle of explosion and not excluded middle, which is easy: it's an ordinary 1-sided natural deduction calculus with the negation introduction rule omitted.
 
 ```haskell
 data Term : List Ty -> Ty -> Type where
   Var : Term [x] x
   Act : Involutive xs ys -> Term ys t -> Term xs t
-  NotElim : {xs, ys : List Ty} -> {default (simplex xs ys) prf : (zs : List Ty ** Simplex xs ys zs)}
+  NotElim : {xs, ys : List Ty} -> {default (simplex xs ys) prf : _}
          -> Term xs t -> Term ys (Not t) -> Term prf.fst Unit
-  TensorIntro : {xs, ys : List Ty} -> {default (simplex xs ys) prf : (zs : List Ty ** Simplex xs ys zs)}
+  TensorIntro : {xs, ys : List Ty} -> {default (simplex xs ys) prf : _}
              -> Term xs t -> Term ys t' -> Term prf.fst (Tensor t t')
-  TensorElim : {xs, ys : List Ty} -> {default (simplex xs ys) prf : (zs : List Ty ** Simplex xs ys zs)}
+  TensorElim : {xs, ys : List Ty} -> {default (simplex xs ys) prf : _}
             -> Term xs (Tensor x y) -> Term (x :: y :: ys) z -> Term prf.fst z
 ```
 
@@ -202,4 +209,4 @@ lem : {a : Ty} -> Term [] (Tensor a (Not a))
 -- impossible
 ```
 
-And it's now possible to write a well typed interpreter for this definition of terms, although I'll skip it here because it involves several pages of mostly tedious boilerplate code.
+And it's now possible to write a well typed interpreter for this definition of terms, although I'll skip it here because it involves several pages of mostly tedious boilerplate code. In the next post we'll add the missing scoping rules to our language, so that by the time we come back to the well typed interpreter in post number 4, we'll be able to use it to do a little bit of differentiable programming.
