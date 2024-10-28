@@ -16,19 +16,19 @@ directors:
     image : "/assets/images/people/philipp-zahn.jpg"
     link : "https://www.philipp-zahn.com/"
 
-collaborators:
+members:
   -
     name : "Nicolas Eschenbaum"
     image : "/assets/images/people/nicolas-eschenbaum.jpg"
     link : "https://neschenbaum.github.io/"
   -
-    name : "Bruno Gavranović"
-    image : "/assets/images/people/bruno-gavranovic.jpg"
-    link : "https://www.brunogavranovic.com/"
-  -
     name : "Fabrizio Genovese"
     image : "/assets/images/people/fabrizio-genovese.jpg"
     link : "https://fabriziogenovese.com/"
+  -
+    name: "Neil Ghani"
+    image: "/assets/images/people/neil-ghani.jpg"
+    link: "https://personal.cis.strath.ac.uk/neil.ghani/"
   -
     name : "Jade Master"
     image : "/assets/images/people/jade-master.jpg"
@@ -45,4 +45,5 @@ collaborators:
     name : "André Videla"
     image : "/assets/images/people/andre-videla.jpg"
     link : "https://github.com/andrevidela"
+
 ---
