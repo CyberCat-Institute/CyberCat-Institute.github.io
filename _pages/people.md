@@ -27,8 +27,12 @@ members:
     link : "https://fabriziogenovese.com/"
   -
     name: "Neil Ghani"
-    image: "/assets/images/people/neil-ghani.jpeg"
+    image: "/assets/images/people/neil-ghani.jpg"
     link: "https://personal.cis.strath.ac.uk/neil.ghani/"
+  -
+    name : "Jade Master"
+    image : "/assets/images/people/jade-master.jpg"
+    link : "https://sites.google.com/view/jadeedenstarmaster/home/"
   -
     name : "Zanzi Mihejevs"
     image : "/assets/images/people/zanzi-mihejevs.jpg"
@@ -42,13 +46,4 @@ members:
     image : "/assets/images/people/andre-videla.jpg"
     link : "https://github.com/andrevidela"
 
-friends:
-  -
-    name : "Bruno Gavranović"
-    image : "/assets/images/people/bruno-gavranovic.jpg"
-    link : "https://www.brunogavranovic.com/"
-  -
-    name : "Jade Master"
-    image : "/assets/images/people/jade-master.jpg"
-    link : "https://sites.google.com/view/jadeedenstarmaster/home/"
 ---
