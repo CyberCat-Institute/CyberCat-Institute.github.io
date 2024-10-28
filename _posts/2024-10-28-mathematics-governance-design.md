@@ -2,7 +2,7 @@
 layout: post
 title: "Mathematics for Governance Design"
 author: Jules Hedges
-date: 2024-10-21
+date: 2024-10-28
 categories: [events]
 excerpt: Recently we held a workshop in Edinburgh titled Mathematics for Governance Design, consisting of a roughly 50/50 split between social scientists and category theorists.
 ---
