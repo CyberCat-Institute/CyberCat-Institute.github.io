@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Programming Pipelines Using Dependent Types"
+author: Andre Videla
+date: 2025-01-11
+categories: [software engineering, dependent types, compiler]
+usemathjax: false
+excerpt: "Sometimes, writing a large program is conceptually as simple as translating from a big unstructured input into a more and more structured output. In this post, we present a data structure to talk about such programs and demonstrate its use and flexbility using a single-pass compiler as case-study."
+
+---
 <!-- idris
 
 module Data.PipelinePart1
