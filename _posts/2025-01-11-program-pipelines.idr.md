@@ -183,3 +183,5 @@ Calling our pipeline with `RunTraceM` will print out every intermediate value pr
 
 There is much more to say about this but is already more than we can usually do without dependent types. We can take the pipeline and build multiple runtimes for it, and run it in multiple modes as well. I've not shown it here but we can also implement operations on the pipeline like concatenation, splicing, etc. Those operations should reflect what happens at runtime: Concatenating two pipeline should compose two programs that run them. This framework can be extended in many other ways but that will serve as a solid base for now, see you in the next one.
 
+The code is available as a library: https://gitlab.com/glaive-research/pipelines
+
