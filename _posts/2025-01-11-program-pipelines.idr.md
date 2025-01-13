@@ -2,7 +2,7 @@
 layout: post
 title: "Programming Pipelines Using Dependent Types"
 author: Andre Videla
-date: 2025-01-11
+date: 2025-01-13
 categories: [software engineering, dependent types, compiler]
 usemathjax: false
 excerpt: "Sometimes, writing a large program is conceptually as simple as translating from a big unstructured input into a more and more structured output. In this post, we present a data structure to talk about such programs and demonstrate its use and flexbility using a single-pass compiler as case-study."
@@ -97,7 +97,7 @@ Run [x, y] f = f
 Run (s :: t :: x :: xs) (f, cont) = Run (t :: x :: xs) cont . f
 ```
 
-The base case runs the single stage we have with the argument we're given. The inductive case run the remaining of the pipeline after running the current stage represented by the function `f`.
+The base case runs the single stage we have with the argument we're given. The inductive case runs the remainder of the pipeline after running the current stage represented by the function `f`.
 
 We can test this idea by assuming we have functions `lex`, `parse`, `typecheck` and `codegen` like in the haskell example and see what happens:
 
@@ -115,9 +115,9 @@ And it typechecks! We cannot run this code because we don't have an implementati
 
 ## Handling effects
 
-This is quite cool, but it's not the end. Remember that compiler need to perform a lot of side effects, returning errors, sometime print out intermediate trees for debugging, how does the pipeline help for that?
+This is quite cool, but it's not the end. Remember that compiler need to perform a lot of side effects, returning errors, sometimes print out intermediate trees for debugging, how does the pipeline help for that?
 
-Well the great benefit from the pipeline is that we've separated the information about the stages from the information about the runtime implementation of the stages. This information is created by `Impl` which create the type of an implementation given a pipeline, but this current version only places the types end-to-end without changes. What if we add an extra `Monad` around the types such that instead of functions `a -> b`, each stage is now an effectful function `a -> m b`.
+Well the great benefit from the pipeline is that we've separated the information about the stages from the information about the runtime implementation of the stages. This information is created by `Impl` which creates the type of an implementation given a pipeline, but this current version only places the types end-to-end without changes. What if we add an extra `Monad` around the types such that instead of functions `a -> b`, each stage is now an effectful function `a -> m b`.
 
 First we define `m : Type -> Type`, our monad, we use a parameter block because we will use it for running our programs too.
 
@@ -183,5 +183,5 @@ Calling our pipeline with `RunTraceM` will print out every intermediate value pr
 
 There is much more to say about this but is already more than we can usually do without dependent types. We can take the pipeline and build multiple runtimes for it, and run it in multiple modes as well. I've not shown it here but we can also implement operations on the pipeline like concatenation, splicing, etc. Those operations should reflect what happens at runtime: Concatenating two pipeline should compose two programs that run them. This framework can be extended in many other ways but that will serve as a solid base for now, see you in the next one.
 
-The code is available as a library: https://gitlab.com/glaive-research/pipelines
+The code is available as a library: [https://gitlab.com/glaive-research/pipelines](https://gitlab.com/glaive-research/pipelines).
 
