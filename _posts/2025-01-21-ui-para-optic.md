@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "UI Frameworks using Parametrised Optics"
+title: "Optics for UI 1: Deconstructing React with Parametrised Lenses"
 author: Zanzi Mihejevs
 date: 2025-01-21
 categories: [software engineering, frontend, optics]
