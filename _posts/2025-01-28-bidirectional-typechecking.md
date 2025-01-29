@@ -71,10 +71,10 @@ Here is an example of how such a "question-and-answer protocol" is implemented u
 
 ```haskell
 lam :: forall f. (Functor f) => (Question -> f Answer) -> Question -> f Answer
-lam k (Check ctx (Fun a b) (Lambda x t)) = k (Check ((x, a) : ctx) b t)
+lam k (Check ctx (Function a b) (Lambda x t)) = k (Check ((x, a) : ctx) b t)
 ```
 
-I find the CPS-like van Laarhoven representation helpful here (for once!) by reflecting the protocol directly. We ask the lens the question `Check ctx (Fun a b) (Lambda x t)`, it asks its continuation the question `Check ((x, a) : ctx) b t`, it gets back the answer, and then it returns the answer to us unchanged.
+I find the CPS-like van Laarhoven representation helpful here (for once!) by reflecting the protocol directly. We ask the lens the question `Check ctx (Function a b) (Lambda x t)`, it asks its continuation the question `Check ((x, a) : ctx) b t`, it gets back the answer, and then it returns the answer to us unchanged.
 
 There is a very obscure but very useful bit of intuition that I learned from Bob Atkey in [this seminar](https://www.youtube.com/watch?v=YpklMn5yNA0), which is that superclasses of Lens differ in the quantity that they have access to their continuation. A lens must call its continuation exactly once, an affine traversal can call its continuation at most once, and a traversal can call its continuation any finite number of times. In the van Laarhoven encoding, a lens must call its continuation at least once because there is no other way to get a value in the unknown functor `f`, and there is also no way to combine the result of two different calls so it can only return one of them. For affine traversals we use pointed functors, which allow us to get into the functor without calling the continuation but still do not allow us to combine the result from two different calls. For traversals we use applicatives, which do both.
 
@@ -93,9 +93,9 @@ The type signature needed to express the (App) rule is something that, at first 
 ```haskell
 app :: forall f. (Monad f) => (Question -> f Answer) -> Question -> f Answer
 app k (Synthesise ctx (App t u)) = do
-  Synthesised (Function a b) <- k (Synthesise ctx t1)
-  Checked <- k (Check ctx a t)
-  return b
+  Synthesised (Function a b) <- k (Synthesise ctx t)
+  Checked <- k (Check ctx a u)
+  return (Synthesised b)
 ```
 
 The appearance of `a` on the second line of the `do` block is exactly the thing that can't be done with an Applicative.
