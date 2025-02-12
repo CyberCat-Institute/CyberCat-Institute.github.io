@@ -3,7 +3,7 @@ layout: post
 title: "Generalized Transformers from Applicative Functors"
 author: Tuomas Laakkonen
 date: 2025-02-12
-categories: machine learning, functional programming
+categories: [machine learning, functional programming]
 usemathjax: true
 excerpt: "Transformers are a machine-learning model at the foundation of many state-of-the-art systems in modern AI. In this post, we are going to build a generalization of Transformer models that can operate on (almost) arbitrary structures such as functions, graphs, probability distributions, not just matrices and vectors."
 ---
