@@ -2,13 +2,11 @@
 layout: post
 title: "Bidirectional Typechecking with Dependent Lenses"
 author: Andre Videla
-date: 2025-02-25
+date: 2025-02-24
 categories:
 usemathjax: true
-excerpt: "Bidirectional Type checking as a lens is possible, and makes use of _monadic traversals_. Can we do the same with dependent lenses? We sure can! It turns out the equivalent representation is the _Kleene star on containers_ and we are going to use it to rebuild the same bidirectional typechecker using dependent lenses only."
+excerpt: "Bidirectional Type checking as a lens is possible, and makes use of monadic traversals. Can we do the same with dependent lenses? We sure can! It turns out the equivalent representation is the Kleene star on containers and we are going to use it to rebuild the same bidirectional typechecker using dependent lenses only."
 ---
-
-# Bidirectional Typechecking with Dependent Lenses
 
 <!-- idris
 module Blog.Bidirectional
@@ -46,7 +44,7 @@ fromString = MkS
 
 In this post, I will reproduce [Jules' implementation][BLOGPOST]
 of bidirectional
-type checking using _dependent lenses_ instead of VanLaarhoven (VLH) lenses. We are going to see how
+type checking using _dependent lenses_ instead of van Laarhoven (VLH) lenses. We are going to see how
 to build and adapt a program build from the ground up using lenses and how to manipulate the types
 involved to achieve our goal. The previous blog post did that and uncovered _monadic traversals_.
 We are going through a similar journey, showing off different monads and functors on containers
@@ -54,7 +52,7 @@ along the way.
 
 ## Finding the right types
 
-The first step is to reproduce the same language structure,
+The first step is to reproduce the same language structure in Idris,
 we define the types for the lambda calculus, and its two classes of terms
 checkable terms and synthesizable terms.
 
@@ -174,7 +172,7 @@ instead.
 error1 : Answer
 ```
 
-Because the error occurs only when returning answers. We can use
+Because the error occurs only when returning answers, we can use
 the _lift_ operation on containers to wrap responses in a monad.
 
 The corrected type is
@@ -339,7 +337,7 @@ checkTypes : Either String (SafeAnswer (Syn ctx (App fn arg)))
 
 To represent the fact that rules can sequence multiple question-answers
 we use the _kleene star on containers_. This construction is equivalently
-known as the free monoid $\circ$ where $\circ$ is the composition of containers.
+known as the free monoid on $\circ$ where $\circ$ is the composition of containers.
 The Kleene star is called
 `Star : Container -> Container` here, and with it, the app rule can be written as
 follows.
@@ -481,7 +479,7 @@ $ :exec putStrLn (printTypechecker program1)
 > Right (SynAnswer a)
 ```
 
-Checking an incorrect progra $(x\ x)$ produces the appropriate error.
+Checking an incorrect program $(x\ x)$ produces the appropriate error.
 
 ```idris
 program2 : Question
