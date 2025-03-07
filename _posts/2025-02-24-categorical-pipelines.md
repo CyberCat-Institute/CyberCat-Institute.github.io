@@ -2,7 +2,7 @@
 layout: post
 title: "Pipelines Part 2: Categorical Pipelines"
 author: Andre Videla
-date: 2025-01-13
+date: 2025-03-07
 categories: [software engineering, Category Theory, Dependent Lenses, dependent types, compiler]
 usemathjax: false
 excerpt: "Programming large complex software requires the right abstractions to make the work as easy as possible. Pipelines help writing programs by leveraging dependent types, but we can do better. By abstracting over the category in which we work, we can implement pipelines for effectful programs, bidirectional programs using dependent lenses, and even graded programs."
