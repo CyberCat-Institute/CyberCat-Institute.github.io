@@ -2,9 +2,9 @@
 layout: post
 title: "Pipelines Part 2: Categorical Pipelines"
 author: Andre Videla
-date: 2025-03-07
+date: 2025-03-12
 categories: [software engineering, Category Theory, Dependent Lenses, dependent types, compiler]
-usemathjax: false
+usemathjax: true
 excerpt: "Programming large complex software requires the right abstractions to make the work as easy as possible. Pipelines help writing programs by leveraging dependent types, but we can do better. By abstracting over the category in which we work, we can implement pipelines for effectful programs, bidirectional programs using dependent lenses, and even graded programs."
 ---
 <!-- idris
@@ -35,13 +35,13 @@ pairUp (x :: y :: xs) = (x, y) :: pairUp (y :: xs)
 %hide Data.List.Quantifiers.Any.Any
 -->
 
-In the [previous post][BLOGPOST] we saw how to implement pipelines and their benefits:
+In the [previous post](https://cybercat.institute/2025/01/13/program-pipelines.idr/) we saw how to implement pipelines and their benefits:
 
 - Separate the specification of the pipeline from its implementation
 - Provide multiple runtimes for the same pipeline
 
 We are now going to generalise the pipeline architecture to categories so that `Run` and `RunM` will be one and the same.
-In addition to handling effects, this makes the pipeline able to compute any sequence of morphism in any category, we are
+In addition to handling effects, this makes the pipeline able to compute any sequence of morphisms in any category, and we are
 going to see how to use the same infrastructure to build a pipeline in the category of dependent lenses. Finally, the
 pipeline architecture can be further generalised to _graded categories_ providing the same benefit but for _graded morphisms_,
 and we are going to use this functionality to automatically combine errors in effectful programs.
@@ -58,7 +58,7 @@ RunM [x, y] f = f
 RunM (s :: t :: x :: xs) (f, cont) = RunM (y :: z :: xs) cont <=< f
 ```
 
-The base case is the same and the inductive case differs only in how we compose functions, in the simple case we use function composition `(.)` and in the monadic case, we use kleisli composition `<=<`. Can we abstract over what composition operator we use? We sure can. In fact, doing so means that we're abstracting over _categories_. That is, we are going to abstract over a generic composition operator `(.) : arr b c -> arr a b -> arr a c` with a generic "arrow type"`arr : o -> o -> Type` . This is the basic definition of a category as an interface in idris:
+The base case is the same and the inductive case differs only in how we compose functions, in the simple case we use function composition `(.)` and in the monadic case we use kleisli composition `<=<`. Can we abstract over what composition operator we use? We sure can. In fact, doing so means that we're abstracting over _categories_. That is, we are going to abstract over a generic composition operator `(.) : arr b c -> arr a b -> arr a c` with a generic "arrow type"`arr : o -> o -> Type` . This is the basic definition of a category as an interface in idris:
 
 ```idris
 -- "| arr" means that the 'arr' argument is uniquely defined
@@ -78,8 +78,8 @@ We simplify our definition of ImplCat using higher order functions
 instead of pattern matching.
 
 ```idris
-    ImplCat : Vect (2 + n) o -> Type
-    ImplCat = All (uncurry arr) . pairUp
+ImplCat : Vect (2 + n) o -> Type
+ImplCat = All (uncurry arr) . pairUp
 ```
 
 <!-- idris
@@ -90,11 +90,11 @@ We implement `RunCat` in the same way as before except `(.)` now refers to
 the composition of morphism of the `Category` interface.
 
 ```idris
-    RunCat : Category arr =>
-        (p : Vect (2 + n) o) ->
-        ImplCat p -> arr (head p) (last p)
-    RunCat [x, y] [f] = f
-    RunCat (x :: y :: z :: xs) (f :: cont) = RunCat (y :: z :: xs) cont . f
+RunCat : Category arr =>
+    (p : Vect (2 + n) o) ->
+    ImplCat p -> arr (head p) (last p)
+RunCat [x, y] [f] = f
+RunCat (x :: y :: z :: xs) (f :: cont) = RunCat (y :: z :: xs) cont . f
 ```
 
 With this setup we can now use the same code for both pure and effecful pipelines! The only difference between the two is what category is used to run the pipeline. In the pure case, we use plain functions where objects are `Type` and arrows are `Fn`. In the effectful case we use _Kleisli Morphisms_ where the objects are type and the morphisms are given by `Kleisli m` where `m : Type -> Type` is a monad, it defines the class of functions `a -> m b`.
@@ -155,9 +155,9 @@ runCompilerM' =
 
 Likewise, the first two arguments are the object and morphisms: in this case, the morphisms are `Kleislimorphism Maybe` which is equivalent to a newtype around `x -> Maybe y`. Because `Kleislimorphism` is a newtype, we need to wrap each value around its constructor `Kleisli`.
 
-## Pipeline of lenses
+## Pipelines of lenses
 
-Because Lenses form a category, we can define a pipeline as a list of input-output pairs where the morphisms between each layer is a lens.
+Because lenses form a category, we can define a pipeline as a list of input-output pairs where the morphisms between each layer are lenses.
 In our case we can do even better and use _dependent lenses_/_container morphisms_ as our category, and build entire applications with them.
 
 For example, the following program describes a command-line program written using containers and stages between them to communicate with a database.
@@ -165,7 +165,7 @@ The first stage converts from an effectful `CLI` interface that receives and sen
 can deal with. The internal API of the app exposing those messages is given by the `AppOp` container. After distributing the monads around, each
 of those messages is converted into a database query. Database queries are then executed by the database and the result is returned to the client.
 
-This entire pipeline is represented as a list of container, where `FM` is the effectful comonad on container, `MaybeAll` the maybe-monad on
+This entire pipeline is represented as a list of containers, where `FM` is the effectful comonad on container, `MaybeAll` the Maybe monad on
 containers and `CUnit` the monoidal unit.
 
 ```idris
@@ -235,6 +235,7 @@ We define graded categories as :
 - An identity morphism `x -[u]> x` where `u` is the monoidal unit in $G$.
 - Graded morphism composition `x -[g]> y`, `y -[h]> z` to `x -[g <+> h]> z` where `<+>` is the multiplication of the monoid.
 - And the usual proofs of associativity and identity.
+
 We can implement graded categories as an interface, and ignore the proofs for simplicity.
 
 ```idris
@@ -247,7 +248,7 @@ interface GradedCat (mon : Monoid gr) (0 arr : gr -> obj -> obj -> Type) | arr w
   (#>) : forall x, y, z.  {g1, g2 : _} -> arr g1 x y -> arr g2 y z -> arr (g1 <+> g2) x z
 ```
 
-With this approach, we can write a _graded pipeline_ where we first give a list of layers for it, additionally, we provide a list of morphisms _and_ a list of grades for each morphism.
+With this approach, we can write a _graded pipeline_ where we first give a list of layers for it, then additionally, we provide a list of morphisms _and_ a list of grades for each morphism.
 
 <!-- idris
 foldGrades : Monoid gr => Vect (S n) gr -> gr
@@ -311,7 +312,7 @@ With this monoid, we define the graded category where morphisms are graded kleis
                  Right v => pure v
 ```
 
-Finally, we implement a compiler with error by using our monoid on types and our graded category. The implementation is as expected and the types compose automatically.
+Finally, we implement a compiler with errors by using our monoid on types and our graded category. The implementation is as expected and the types compose automatically.
 
 ```idris
 lexErr : List Char -> Either LexerError (List Token)
@@ -333,7 +334,7 @@ CompilerEither : String -> Either (Either Void (Either LexerError (Either ParseE
 While we managed to handle errors automatically, it would be nice if our implementation did not suffer from those
 artefacts. Thankfully, this is easily done by changing the monoid we are working with.
 
-## Implementing Errors with `Any`
+## Implementing errors with `Any`
 
 To address the problem of redundant neutral values from the previous example, we use the `List` monoid rather than
 `Type` and `Either`. With `[]` as the neutral element and concatenation `(++)` as the monoidal operations, lists
@@ -341,7 +342,7 @@ naturally ignore their neutral elements when combined. A program that returns no
 empty list of errors, and programs with errors return a singleton list containing the error they emit.
 
 Now that we know that we want to grade our arrows by lists, we have yet to define what is an appropriate morphism
-graded by such list. For this we use the `OneOf : List Type -> Type` type, a sort of iterated coproduct where each
+graded by such a list. For this we use the `OneOf : List Type -> Type` type, a sort of iterated coproduct where each
 possible choice is given by the types in the list. We write it as a special case of `Any`: a predicate on lists
 asserting that exactly one element in a list of `a` fullfils the predicate `p : a -> Type`.
 
@@ -426,5 +427,3 @@ categories yields a way to dynamically combine errors without additional ceremon
 the time to talk about it here, the ability to use
 graded morphisms also comes in handy for composing _graded dependent lenses_ which we can obtain via the
 para-construction on dependent lenses for example.
-
-[BLOGPOST]: https://glaive-research.org/software%20engineering/dependent%20types/compiler/2025/01/13/program-pipelines.idr.html
