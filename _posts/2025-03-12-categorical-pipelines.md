@@ -194,7 +194,7 @@ appImpl = [ parser
 
 This pipeline can also be represented graphically:
 
-![](/assets/img/container-pipeline.png)
+![](/assetsPosts/2025-03-12-categorical-pipelines/container-pipeline.png)
 
 Unfortunately we cannot use kleisli morphisms with this pipeline because we are not using the same monad across the entire pipeline.
 
