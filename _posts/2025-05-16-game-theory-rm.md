@@ -3,7 +3,7 @@ layout: post
 title: "The Untapped Potential of Game Theory in Revenue Management"
 author: Nicolas Eschenbaum
 date: 2025-05-16
-categories: 
+categories: [game theory, economics]
 usemathjax: false
 excerpt: "Revenue management has evolved significantly since its origins in 1980s airline yield management. Travel, logistics, and hospitality industries employ it to maximize occupancies; e-commerce platforms use it to schedule promotion campaigns. It is the go-to tool across industries to match resource availability with consumer demand. But most current approaches still rely on relatively simple demand forecasting and optimization. The behaviour of other players in the market (for example competitors) is rarely explicitly accounted for, even though their behaviour implicitly shows up in the data used to estimate the models. Game theory — which has emerged as the dominant tool for modeling strategic dynamics — offers powerful potential to change this."
 ---
