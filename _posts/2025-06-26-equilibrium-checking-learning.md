@@ -2,15 +2,15 @@
 layout: post
 title: "From Equilibrium Checking to Learing with the Open Game Engine"
 author: Jules Hedges
-date: 2025-04-02
-categories: 
+date: 2025-06-26
+categories: [game theory, open games]
 usemathjax: false
 excerpt: "Compositional game theory, like game theory in general, is not just for toy models. Game theory is the standard tool for modelling in a wide range of applications in microeconomics, and many of those benefit from compositionality. One of these applications is pricing, and especially its modern version, dynamic pricing. We have been working on a research project on how to do dynamic pricing in a strategic, competitor-aware way, using compositional game theory and its natural connections to optimal control and reinforcement learning, and building on the Open Game Engine."
 ---
 
 Compositional game theory, like game theory in general, is not just for toy models. Game theory is the standard tool for modelling in a wide range of applications in microeconomics, and many of those benefit from compositionality. One of these applications is pricing, and especially its modern version, dynamic pricing. We have been working on a research project on how to do dynamic pricing in a strategic, competitor-aware way, using compositional game theory and its natural connections to optimal control and reinforcement learning, and building on the [Open Game Engine](https://github.com/CyberCat-Institute/open-game-engine/tree/master).
 
-In this post I'm going to discuss how we adapted the Open Game Engine, which is fundamentally designed as an equilibrium checker, to do multi-agent learning instead. The project we did also involved a lot of economics, but that will come in a later post.
+In this post I'm going to discuss how we adapted the Open Game Engine, which is fundamentally designed as an equilibrium checker, to do multi-agent learning instead. The project we did also involved a lot of economics, which Nicolas wrote about in [this post](https://cybercat.institute/2025/05/16/game-theory-rm/).
 
 ## From equilibrium checking to dynamic programming
 
