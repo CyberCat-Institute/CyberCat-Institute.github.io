@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "From Equilibrium Checking to Learing with the Open Game Engine"
+title: "From Equilibrium Checking to Learning with the Open Game Engine"
 author: Jules Hedges
 date: 2025-06-26
 categories: [game theory, open games]
