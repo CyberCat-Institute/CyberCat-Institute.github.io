@@ -12,7 +12,7 @@ usemathjax: true
 
 ## Introduction
 
-Some time ago, in a [previous blog post](https://statebox.org/blog/compositional-game-engine/), we introduced our software engine for game theoretic modelling. In this post, we expand more on how to apply the engine to use cases relevant for the Ethereum ecosystem. We will consider an analysis of a simplified staking protocol. Our focus will be on compositionality – what this means from the perspective of representing protocols and from the perspective of analyzing protocols.
+Some time ago, in a [previous blog post](https://blog.20squares.xyz/open-games-repost/), we introduced our software engine for game theoretic modelling.[^] In this post, we expand more on how to apply the engine to use cases relevant for the Ethereum ecosystem. We will consider an analysis of a simplified staking protocol. Our focus will be on compositionality – what this means from the perspective of representing protocols and from the perspective of analyzing protocols.
 
 We end with an outlook on the further development of the engine, what its current limitations are and how we work on overcoming them.
 
@@ -637,3 +637,5 @@ We can shed further light in what is going on here: So far we assumed that the v
 ## Outlook
 
 The development of the engine is ongoing. Protocols which involve a timing choice, as for instance for a proposer waiting to send information and thereby potentially learning something about the validators’ behavior in the meantime, pose a challenge for the current implementation. One should add, they also pose a challenge for classical game representations such as the extensive form. As we have shown, it is still entirely possible to represent such games in the engine. However, such modelling puts the burden on the modeller to make reasonable choices. It would be nice to start with an actual protocol and extract a game-theoretic model out of it. Extending the underlying theory and the engine to better accommodate such scenarios is on the top of our todo list.
+
+[^1]: Note that his a repost, the original post appeared [here](https://statebox.org/blog/compositional-game-engine/)
